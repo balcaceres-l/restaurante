@@ -96,6 +96,7 @@ public class registro_admin extends javax.swing.JInternalFrame {
 
         main.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 160, 30));
 
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Supervisor", "Trabajador" }));
         main.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 160, 30));
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
