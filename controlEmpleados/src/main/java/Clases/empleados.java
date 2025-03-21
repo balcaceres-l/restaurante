@@ -9,53 +9,37 @@ public class empleados {
     int idUsuario;
     int idPuesto;
     int idHorario;
-    String nombre;
-    String apellido;
-    String email;
+    Date fechaContratacion;
     public empleados() {
     }
 
-    public empleados(int idEmpleado, int idUsuario, int idPuesto, int idHorario, String nombre, String apellido, String email) {
+    public empleados(int idEmpleado, int idUsuario, int idPuesto, int idHorario, Date fechaContratacion) {
         this.idEmpleado = idEmpleado;
         this.idUsuario = idUsuario;
         this.idPuesto = idPuesto;
         this.idHorario = idHorario;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
+        this.fechaContratacion=fechaContratacion;
     }
 
     public int getIdHorario() {
         return idHorario;
     }
 
-    public String getNombre() {
-        return nombre;
+    public Date getFechaContratacion() {
+        return fechaContratacion;
     }
 
-    public String getApellido() {
-        return apellido;
-    }
-
-    public String getEmail() {
-        return email;
-    }
+   
 
     public void setIdHorario(int idHorario) {
         this.idHorario = idHorario;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setFechaContratacion(Date fechaContratacion) {
+        this.fechaContratacion = fechaContratacion;
     }
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
+    
     
 
     public int getIdEmpleado() {

@@ -4,6 +4,9 @@ public class usuarios {
     int idRol;
     String usuario;
     String password;
+    String nombre;
+    String apellido;
+    String correo;
 
     public usuarios() {
     }
@@ -17,6 +20,26 @@ public class usuarios {
         this.password = password;
     }
 
+    public usuarios(int idUsuario, int idRol, String usuario, String password, String nombre, String apellido, String correo) {
+        this.idUsuario = idUsuario;
+        this.idRol = idRol;
+        this.usuario = usuario;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+    }
+
+    public usuarios(int idRol, String usuario, String password, String nombre, String apellido, String correo) {
+        this.idRol = idRol;
+        this.usuario = usuario;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.correo = correo;
+    }
+    
+
     public usuarios(int idRol, String usuario,  String password) {
         this.idRol = idRol;
      
@@ -29,6 +52,31 @@ public class usuarios {
         return idUsuario;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    
     public int getIdRol() {
         return idRol;
     }
