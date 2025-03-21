@@ -31,21 +31,6 @@ public class horarios_DAO  {
         }
         return horario;
     }
-    public horario ObtenerTrabajo(int id_horario){
-        horario horario= null;
-        Connection con = Conexion.getInstancia().getConec();
-        String sql = "{call ObtenerTrabajo(?)}";
-        try (CallableStatement stmt = con.prepareCall(sql)){
-            stmt.setInt(1, id_horario);
-            ResultSet rs= stmt.executeQuery();
-            if(rs.next()){
-                horario= new horario();
-                horario.setDiasLaborales(rs.getString("dias_laborales"));
-                horario.setDiasDescanso(rs.getString("dias_descanso"));
-            }
-        }   catch(SQLException e){
-            System.out.print("Error al poner horarios laborales " + e.getMessage());
-        }
-        return horario;
-    }
+    
+    
 }

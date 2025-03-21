@@ -8,7 +8,7 @@ public class Conexion {
     private Conexion() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=resta;encrypt=false";
+            String url = "jdbc:sqlserver://localhost\\SQLEXPRESS:1433;databaseName=Restaurante_PBD;encrypt=false";
             String user = "sa";
             String password = "Catolica10";
             conec = DriverManager.getConnection(url, user, password);
