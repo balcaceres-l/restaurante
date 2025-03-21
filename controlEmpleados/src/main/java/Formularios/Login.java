@@ -12,8 +12,8 @@ import Clases.*;
 import Clases.usuarios;
 import clasesDAO.*;
 import clasesDAO.usuarios_DAO;
-import Formularios.admin.principal_admin;
-import Formularios.empleado.principal_empleado;
+import Formularios.admin.Principal;
+import Formularios.empleado.Principal_empleado;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
@@ -51,7 +51,6 @@ public class Login extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -130,32 +129,15 @@ public class Login extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(102, 153, 255));
 
-        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
-        jDesktopPane1.setLayout(jDesktopPane1Layout);
-        jDesktopPane1Layout.setHorizontalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 220, Short.MAX_VALUE)
-        );
-        jDesktopPane1Layout.setVerticalGroup(
-            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+            .addGap(0, 340, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(81, 81, 81)
-                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 524, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 102, 102));
@@ -221,7 +203,7 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -265,15 +247,13 @@ public class Login extends javax.swing.JFrame {
         String resultado= usuarios.validarUsuario(usuario, contra);
         if(resultado != null){
             if(resultado.contains("Rol: Administrador")){
-                principal_admin objAdmin = new principal_admin();
-                jDesktopPane1.add(objAdmin);
+                Principal objAdmin = new Principal();
                 objAdmin.setVisible(true);
      
                 System.out.println("Sesion iniciada");
               
             } else {
-                principal_empleado emp = new principal_empleado();
-                jDesktopPane1.add(emp);
+                Principal_empleado emp = new Principal_empleado();
               
                 emp.setVisible(true);
                 
@@ -330,7 +310,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPanel btnEntrar;
     private javax.swing.JPanel btnRegistrarse;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
