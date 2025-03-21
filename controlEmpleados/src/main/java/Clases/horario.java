@@ -12,24 +12,14 @@ public class horario {
 
     public horario() {
     }
-
-    public horario(int idHorario, int idEmpleado, String diasLaborales, String diasDescanso, Date horaEntrada, Date horaSalida) {
-        this.idHorario = idHorario;
+    public horario( int idEmpleado, String diasLaborales, String diasDescanso, Date horaEntrada, Date horaSalida) {
         this.idEmpleado = idEmpleado;
         this.diasLaborales = diasLaborales;
         this.diasDescanso = diasDescanso;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
     }
-
-    public horario(int idHorario, String diasLaborales, String diasDescanso, Date horaEntrada, Date horaSalida) {
-        this.idHorario = idHorario;
-        this.diasLaborales = diasLaborales;
-        this.diasDescanso = diasDescanso;
-        this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
-    }
-
+    
     public int getIdHorario() {
         return idHorario;
     }

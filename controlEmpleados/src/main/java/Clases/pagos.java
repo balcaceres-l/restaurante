@@ -9,30 +9,29 @@ public class pagos {
     Date fechaInicio;
     Date fechaCorte;
     Date fechaPago;
-    double salarioBase;
     double descuentos;
     double salarioNeto;
 
     public pagos() {
     }
 
-    public pagos(int idPago, int idEmpleado, Date fechaInicio, Date fechaCorte, Date fechaPago, double salarioBase, double descuentos, double salarioNeto) {
+    public pagos(int idPago, int idEmpleado, Date fechaInicio, Date fechaCorte, Date fechaPago , double descuentos, double salarioNeto) {
         this.idPago = idPago;
         this.idEmpleado = idEmpleado;
         this.fechaInicio = fechaInicio;
         this.fechaCorte = fechaCorte;
         this.fechaPago = fechaPago;
-        this.salarioBase = salarioBase;
+    
         this.descuentos = descuentos;
         this.salarioNeto = salarioNeto;
     }
 
-    public pagos(int idPago, Date fechaInicio, Date fechaCorte, Date fechaPago, double salarioBase, double descuentos, double salarioNeto) {
+    public pagos(int idPago, Date fechaInicio, Date fechaCorte, Date fechaPago , double descuentos, double salarioNeto) {
         this.idPago = idPago;
         this.fechaInicio = fechaInicio;
         this.fechaCorte = fechaCorte;
         this.fechaPago = fechaPago;
-        this.salarioBase = salarioBase;
+        
         this.descuentos = descuentos;
         this.salarioNeto = salarioNeto;
     }
@@ -57,9 +56,7 @@ public class pagos {
         return fechaPago;
     }
 
-    public double getSalarioBase() {
-        return salarioBase;
-    }
+   
 
     public double getDescuentos() {
         return descuentos;
@@ -89,9 +86,7 @@ public class pagos {
         this.fechaPago = fechaPago;
     }
 
-    public void setSalarioBase(double salarioBase) {
-        this.salarioBase = salarioBase;
-    }
+   
 
     public void setDescuentos(double descuentos) {
         this.descuentos = descuentos;

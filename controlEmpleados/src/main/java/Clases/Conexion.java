@@ -1,11 +1,8 @@
 package Clases;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 public class Conexion {
-    
     private static Conexion instancia; 
     private Connection conec; 
     private Conexion() {
