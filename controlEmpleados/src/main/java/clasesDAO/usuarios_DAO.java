@@ -34,9 +34,25 @@ public class usuarios_DAO {
         return mensaje + (rol != null ? ", Rol: " + rol : "");
     }
     public void AgregarUsuario(usuarios usuario){
+        
+        Connection con= Conexion.getInstancia().getConec();
         if (existeUsuario(usuario.getUsuario())) {
             JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe. Por favor, elige otro.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
+        }
+        String sql= "{CALL InsertarUsuario(?,?,?,?,?,?)}";
+        try (CallableStatement stmt = con.prepareCall(sql)){
+            String hashPass= encriptar(usuario.getPassword());
+            stmt.setInt(1, usuario.getIdRol());
+            stmt.setString(2, usuario.getUsuario());
+            stmt.setString(3, usuario.getNombre());
+            stmt.setString(4, usuario.getApellido());
+            stmt.setString(5, usuario.getCorreo());
+            stmt.setString(6, hashPass);
+            stmt.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario registrado con éxito");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     public  boolean existeUsuario(String usuario) {

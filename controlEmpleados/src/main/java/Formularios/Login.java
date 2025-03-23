@@ -18,16 +18,11 @@ import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Login
-     */
     usuarios_DAO usuarios;
    
 
     public Login() {
         initComponents();
-        
-        
 
     }
 
@@ -176,6 +171,11 @@ public class Login extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTRARSE");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnRegistrarseLayout = new javax.swing.GroupLayout(btnRegistrarse);
         btnRegistrarse.setLayout(btnRegistrarseLayout);
@@ -237,7 +237,7 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
@@ -249,14 +249,12 @@ public class Login extends javax.swing.JFrame {
             if(resultado.contains("Rol: Administrador")){
                 Principal objAdmin = new Principal();
                 objAdmin.setVisible(true);
-     
+                this.dispose();
                 System.out.println("Sesion iniciada");
-              
             } else {
                 Principal_empleado emp = new Principal_empleado();
-              
                 emp.setVisible(true);
-                
+                this.dispose();
                 System.out.println("Sesion iniciada como empleado normal");
              
                 
@@ -264,12 +262,19 @@ public class Login extends javax.swing.JFrame {
         }else {
             JOptionPane.showMessageDialog(null, "alert", "Error contraseña o usuario incorrectos", JOptionPane.ERROR_MESSAGE);
         }
+        jTextField1.setText("");
+        jPasswordField1.setText("");
 
     }//GEN-LAST:event_jLabel4MouseClicked
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         this.dispose();
     }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        Registro_principal principal= new Registro_principal();
+        principal.setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments

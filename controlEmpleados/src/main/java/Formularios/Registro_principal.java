@@ -3,16 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
  */
 package Formularios;
-
-/**
- *
- * @author david
- */
+    import clasesDAO.*;
+    import Clases.*;
+    import Clases.Conexion;
+    import clasesDAO.usuarios_DAO;
+import javax.swing.JOptionPane;
 public class Registro_principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Registro_principal
-     */
+    usuarios_DAO usuario;
     public Registro_principal() {
         initComponents();
     }
@@ -149,13 +147,18 @@ public class Registro_principal extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("SALIR");
         jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
         btnSalir.setLayout(btnSalirLayout);
         btnSalirLayout.setHorizontalGroup(
             btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(11, 11, 11))
         );
@@ -167,7 +170,7 @@ public class Registro_principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        desktopPane.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 470, 140, 40));
+        desktopPane.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 110, 40));
 
         sidebar.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -234,6 +237,20 @@ public class Registro_principal extends javax.swing.JFrame {
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("REGISTRARSE");
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel7.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel7AncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout btnRegistro1Layout = new javax.swing.GroupLayout(btnRegistro1);
         btnRegistro1.setLayout(btnRegistro1Layout);
@@ -306,6 +323,37 @@ public class Registro_principal extends javax.swing.JFrame {
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jLabel7AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel7AncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7AncestorAdded
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        String usuario = jTextField1.getText().trim();
+        String nombre = jTextField2.getText().trim();
+        String apellido = jTextField4.getText().trim();
+        String clave = jTextField3.getText().trim();
+        String correo = jTextField5.getText().trim();
+        int idRol = (jComboBox1.getSelectedIndex() == 0) ? 2 : 1; 
+        if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        usuarios nuevoUsuario = new usuarios(idRol, usuario, clave, nombre, apellido, correo);
+        usuarios_DAO usuarioDAO = new usuarios_DAO();
+        usuarioDAO.AgregarUsuario(nuevoUsuario);
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jTextField5.setText("");
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        Login inicio= new Login();
+        inicio.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel8MouseClicked
 
     /**
      * @param args the command line arguments

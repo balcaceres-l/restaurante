@@ -7,7 +7,7 @@ public class usuarios {
     String nombre;
     String apellido;
     String correo;
-
+    
     public usuarios() {
     }
 
@@ -55,7 +55,7 @@ public class usuarios {
     public String getNombre() {
         return nombre;
     }
-
+    
     public String getApellido() {
         return apellido;
     }
