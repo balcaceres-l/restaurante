@@ -10,11 +10,14 @@ package Formularios.empleado;
  */
 public class editarUsuario_empleado extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form editarUsuario_empleado
-     */
+    int id;
     public editarUsuario_empleado() {
         initComponents();
+    }
+    public editarUsuario_empleado(int id){
+        initComponents();
+        this.id=id;
+        jTextField1.setText(String.valueOf(id));
     }
 
     /**

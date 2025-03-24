@@ -4,8 +4,10 @@ Formularios\admin\Principal.class
 Clases\Permisos_Area.class
 Formularios\Login.class
 Formularios\admin\asignarHorarios_admin.class
+Formularios\empleado\Principal_empleado$2.class
 Formularios\Registro_principal$2.class
 Formularios\Registro_principal$5.class
+Formularios\admin\Principal$2.class
 Clases\EstadoUtensilios.class
 clasesDAO\pagos_DAO.class
 Formularios\Login$5.class

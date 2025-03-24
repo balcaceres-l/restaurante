@@ -252,33 +252,28 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-        usuarios_DAO usuarios = new usuarios_DAO();
+    usuarios_DAO usuarios = new usuarios_DAO();
     String usuario = jTextField1.getText();
     String contra = jPasswordField1.getText();
-    
-    // Llamar al método validarUsuario y obtener el objeto usuarios
+   
     usuarios usuarioAutenticado = usuarios.validarUsuario(usuario, contra);
-    
+    int id= usuarioAutenticado.getIdUsuario();
         if (usuarioAutenticado != null) {
-            // Comprobamos el rol del usuario autenticado
             switch (usuarioAutenticado.getIdRol()) {
                 case 1:
-                    // Rol Administrador
-                    Principal objAdmin = new Principal();
+                    Principal objAdmin = new Principal(id);
                     objAdmin.setVisible(true);
                     this.dispose();
                     System.out.println("Sesión iniciada como Administrador");
                     break;
                 case 5:
-                    // Rol Supervisor
-                    Principal_empleado objSupervisor = new Principal_empleado();
+                    Principal_empleado objSupervisor = new Principal_empleado(id);
                     objSupervisor.setVisible(true);
                     this.dispose();
                     System.out.println("Sesión iniciada como Supervisor");
                     break;
                 case 6:
-                    // Rol Usuario Normal
-                    Principal_empleado emp = new Principal_empleado();
+                    Principal_empleado emp = new Principal_empleado(id);
                     emp.setVisible(true);
                     this.dispose();
                     System.out.println("Sesión iniciada como Usuario Normal");
@@ -287,12 +282,10 @@ public class Login extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Error", "Rol no reconocido", JOptionPane.ERROR_MESSAGE);
                     break;
             }
-            System.out.println("ID del usuario autenticado: " + usuarioAutenticado.getIdUsuario());
+            System.out.println("ID del usuario autenticado: " + id);
         } else {
             JOptionPane.showMessageDialog(null, "Error", "Contraseña o usuario incorrectos", JOptionPane.ERROR_MESSAGE);
         }
-
-    // Limpiar los campos
     jTextField1.setText("");
     jPasswordField1.setText("");
 

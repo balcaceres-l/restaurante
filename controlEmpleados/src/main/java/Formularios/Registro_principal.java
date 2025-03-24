@@ -1,10 +1,10 @@
 package Formularios;
-    import clasesDAO.*;
-    import Clases.*;
-    import Clases.Conexion;
-    import Formularios.admin.Principal;
-    import Formularios.empleado.Principal_empleado;
-    import clasesDAO.usuarios_DAO;
+import clasesDAO.*;
+import Clases.*;
+import Clases.Conexion;
+import Formularios.admin.Principal;
+import Formularios.empleado.Principal_empleado;
+import clasesDAO.usuarios_DAO;
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -373,11 +373,11 @@ public class Registro_principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-        
+        this.registro();
     }//GEN-LAST:event_jLabel9MouseClicked
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jLabel10MouseClicked
 
     private void btn_registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registroMouseClicked

@@ -10,11 +10,13 @@ package Formularios.empleado;
  */
 public class Principal_empleado extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    int id;
     public Principal_empleado() {
         initComponents();
+    }
+    public Principal_empleado(int id){
+        initComponents();
+        this.id=id;
     }
 
     /**
@@ -31,10 +33,11 @@ public class Principal_empleado extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnEditar_perfil = new javax.swing.JButton();
-        btnEditar_perfil1 = new javax.swing.JButton();
         btnEditar_perfil2 = new javax.swing.JButton();
         btnEditar_perfil5 = new javax.swing.JButton();
+        btnEditar_perfil3 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
+        jDesktopPane1 = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,16 +54,14 @@ public class Principal_empleado extends javax.swing.JFrame {
         btnEditar_perfil.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEditar_perfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil.setText("HORARIOS");
+        btnEditar_perfil.setText("Editar Perfil");
         btnEditar_perfil.setBorder(null);
         btnEditar_perfil.setBorderPainted(false);
-
-        btnEditar_perfil1.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil1.setText("EDITAR PERFIL");
-        btnEditar_perfil1.setBorder(null);
-        btnEditar_perfil1.setBorderPainted(false);
+        btnEditar_perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfilActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil2.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -76,6 +77,13 @@ public class Principal_empleado extends javax.swing.JFrame {
         btnEditar_perfil5.setBorder(null);
         btnEditar_perfil5.setBorderPainted(false);
 
+        btnEditar_perfil3.setBackground(new java.awt.Color(0, 102, 153));
+        btnEditar_perfil3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnEditar_perfil3.setForeground(new java.awt.Color(255, 255, 255));
+        btnEditar_perfil3.setText("HORARIOS");
+        btnEditar_perfil3.setBorder(null);
+        btnEditar_perfil3.setBorderPainted(false);
+
         javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
         sidebar.setLayout(sidebarLayout);
         sidebarLayout.setHorizontalGroup(
@@ -89,16 +97,12 @@ public class Principal_empleado extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jSeparator1))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 29, Short.MAX_VALUE))
                     .addComponent(btnEditar_perfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnEditar_perfil3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         sidebarLayout.setVerticalGroup(
             sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,21 +111,18 @@ public class Principal_empleado extends javax.swing.JFrame {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
+                .addGap(18, 18, 18)
                 .addComponent(btnEditar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(11, 11, 11)
+                .addComponent(btnEditar_perfil3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addGap(137, 137, 137)
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(353, Short.MAX_VALUE)))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
-        desktopPane.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 530));
+        desktopPane.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 650));
 
         header.setBackground(new java.awt.Color(102, 153, 255));
 
@@ -129,32 +130,53 @@ public class Principal_empleado extends javax.swing.JFrame {
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 870, Short.MAX_VALUE)
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
 
-        desktopPane.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, -1));
+        desktopPane.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 870, 160));
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 840, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 640, Short.MAX_VALUE)
+        );
+
+        desktopPane.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 840, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1098, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 524, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 642, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditar_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfilActionPerformed
+       editarUsuario_empleado user= new editarUsuario_empleado(id);
+        user.setVisible(true);
+    jDesktopPane1.add(user);
+    btnEditar_perfil3.setEnabled(false);
+    btnEditar_perfil2.setEnabled(false);
+    btnEditar_perfil5.setEnabled(false);
+       
+    }//GEN-LAST:event_btnEditar_perfilActionPerformed
 
     /**
      * @param args the command line arguments
@@ -194,11 +216,12 @@ public class Principal_empleado extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEditar_perfil;
-    private javax.swing.JButton btnEditar_perfil1;
     private javax.swing.JButton btnEditar_perfil2;
+    private javax.swing.JButton btnEditar_perfil3;
     private javax.swing.JButton btnEditar_perfil5;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel header;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel sidebar;

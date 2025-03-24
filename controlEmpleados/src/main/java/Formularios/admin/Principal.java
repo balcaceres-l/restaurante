@@ -10,10 +10,12 @@ package Formularios.admin;
  */
 public class Principal extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Principal
-     */
+    int id;
     public Principal() {
+        initComponents();
+    }
+    public Principal(int id){
+        this.id=id;
         initComponents();
     }
 
@@ -64,6 +66,11 @@ public class Principal extends javax.swing.JFrame {
         btnEditar_perfil1.setText("EDITAR PERFIL");
         btnEditar_perfil1.setBorder(null);
         btnEditar_perfil1.setBorderPainted(false);
+        btnEditar_perfil1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfil1ActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil2.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -184,6 +191,10 @@ public class Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEditar_perfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil1ActionPerformed
+        
+    }//GEN-LAST:event_btnEditar_perfil1ActionPerformed
 
     /**
      * @param args the command line arguments

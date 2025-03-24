@@ -87,7 +87,7 @@ public class usuarios_DAO {
         }
     }
     public  boolean existeUsuario(String usuario) {
-        String sql = "SELECT COUNT(*) FROM usuario WHERE usuario = ?";
+        String sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = ?";
 
         try (PreparedStatement stmt = Conexion.getInstancia().getConec().prepareStatement(sql)) {
             stmt.setString(1, usuario);
