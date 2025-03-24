@@ -27,16 +27,6 @@ public class empleados_admin extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         main = new javax.swing.JPanel();
-        sidebar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        btnEditar_perfil = new javax.swing.JButton();
-        btnEditar_perfil1 = new javax.swing.JButton();
-        btnEditar_perfil2 = new javax.swing.JButton();
-        btnEditar_perfil3 = new javax.swing.JButton();
-        btnEditar_perfil4 = new javax.swing.JButton();
-        btnEditar_perfil5 = new javax.swing.JButton();
-        btnEditar_perfil6 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -46,142 +36,36 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         btnVerSalario = new javax.swing.JButton();
         btnEliminarEmpleado = new javax.swing.JButton();
         btnEditarEmpleado = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBorder(null);
 
         main.setBackground(new java.awt.Color(255, 255, 255));
         main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sidebar.setBackground(new java.awt.Color(0, 51, 102));
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("GESTIÓN DE EMPLEADOS");
-
-        btnEditar_perfil.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil.setText("HORARIOS");
-        btnEditar_perfil.setBorder(null);
-        btnEditar_perfil.setBorderPainted(false);
-
-        btnEditar_perfil1.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil1.setText("EDITAR PERFIL");
-        btnEditar_perfil1.setBorder(null);
-        btnEditar_perfil1.setBorderPainted(false);
-
-        btnEditar_perfil2.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil2.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil2.setText("PAGOS");
-        btnEditar_perfil2.setBorder(null);
-        btnEditar_perfil2.setBorderPainted(false);
-
-        btnEditar_perfil3.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil3.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil3.setText("EMPLEADOS");
-        btnEditar_perfil3.setBorder(null);
-        btnEditar_perfil3.setBorderPainted(false);
-
-        btnEditar_perfil4.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil4.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil4.setText("INVENTARIOS");
-        btnEditar_perfil4.setBorder(null);
-        btnEditar_perfil4.setBorderPainted(false);
-
-        btnEditar_perfil5.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil5.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil5.setText("SOLICITUDES");
-        btnEditar_perfil5.setBorder(null);
-        btnEditar_perfil5.setBorderPainted(false);
-
-        btnEditar_perfil6.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil6.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil6.setText("AUDITORÍA");
-        btnEditar_perfil6.setBorder(null);
-        btnEditar_perfil6.setBorderPainted(false);
-
-        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
-        sidebar.setLayout(sidebarLayout);
-        sidebarLayout.setHorizontalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sidebarLayout.createSequentialGroup()
-                        .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(sidebarLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jSeparator1))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addComponent(btnEditar_perfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        sidebarLayout.setVerticalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(btnEditar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnEditar_perfil3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar_perfil4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addGap(137, 137, 137)
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(323, Short.MAX_VALUE)))
-        );
-
-        main.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         header.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel2.setText("EMPLEADOS");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(297, 297, 297)
+                .addComponent(jLabel2)
+                .addContainerGap(350, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel2.setText("EMPLEADOS");
-        main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,7 +80,7 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, 530, 230));
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 760, 230));
 
         jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
@@ -206,29 +90,34 @@ public class empleados_admin extends javax.swing.JInternalFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 152, 530, 30));
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 760, 30));
 
         btnAggEmpleado.setBackground(new java.awt.Color(0, 102, 153));
         btnAggEmpleado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAggEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         btnAggEmpleado.setText("Agregar ");
-        main.add(btnAggEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 30));
+        main.add(btnAggEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, -1, 30));
 
         btnVerSalario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnVerSalario.setText("Ver Salario");
         btnVerSalario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        main.add(btnVerSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 430, 90, 30));
+        main.add(btnVerSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 90, 30));
 
         btnEliminarEmpleado.setBackground(new java.awt.Color(0, 102, 153));
         btnEliminarEmpleado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarEmpleado.setText("Eliminar");
-        main.add(btnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 430, -1, 30));
+        main.add(btnEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, 30));
 
         btnEditarEmpleado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEditarEmpleado.setText("Editar");
         btnEditarEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        main.add(btnEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 430, 90, 30));
+        main.add(btnEditarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 420, 90, 30));
+
+        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jButton1.setText("REGRESAR");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 410, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -238,7 +127,7 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 462, Short.MAX_VALUE)
         );
 
         pack();
@@ -252,23 +141,14 @@ public class empleados_admin extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAggEmpleado;
     private javax.swing.JButton btnEditarEmpleado;
-    private javax.swing.JButton btnEditar_perfil;
-    private javax.swing.JButton btnEditar_perfil1;
-    private javax.swing.JButton btnEditar_perfil2;
-    private javax.swing.JButton btnEditar_perfil3;
-    private javax.swing.JButton btnEditar_perfil4;
-    private javax.swing.JButton btnEditar_perfil5;
-    private javax.swing.JButton btnEditar_perfil6;
     private javax.swing.JButton btnEliminarEmpleado;
     private javax.swing.JButton btnVerSalario;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel main;
-    private javax.swing.JPanel sidebar;
     // End of variables declaration//GEN-END:variables
 }
