@@ -42,23 +42,17 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        btnEditarUsuario_empleado = new javax.swing.JButton();
-        btnEditarNombre_empleado1 = new javax.swing.JButton();
 
         setBorder(null);
         setResizable(true);
@@ -190,12 +184,6 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         jTextField1.setEnabled(false);
         main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 150, 80, -1));
 
-        jLabel4.setText("ID EMPLEADO:");
-        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 150, 80, 20));
-
-        jTextField2.setEnabled(false);
-        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 150, 80, -1));
-
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setText("NOMBRE");
         main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, -1, -1));
@@ -205,24 +193,20 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel7.setText("CLAVE");
-        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 290, -1, -1));
+        jLabel7.setText("APELLIDO");
+        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
         main.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 560, 10));
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setText("ROL");
         main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel9.setText("PUESTO");
-        main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 60, -1));
-
         jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel10.setText("INICIÓ");
-        main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, -1, -1));
+        main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 410, -1, -1));
 
         jTextField3.setEnabled(false);
-        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 420, 160, 30));
+        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, 160, 30));
         main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 160, 30));
         main.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, 160, 30));
 
@@ -231,11 +215,6 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
 
         jTextField7.setEnabled(false);
         main.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 160, 30));
-
-        jTextField8.setEnabled(false);
-        main.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 380, 160, 30));
-        main.add(btnEditarUsuario_empleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 240, 40, 30));
-        main.add(btnEditarNombre_empleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 200, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -253,8 +232,6 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditarNombre_empleado1;
-    private javax.swing.JButton btnEditarUsuario_empleado;
     private javax.swing.JButton btnEditar_perfil;
     private javax.swing.JButton btnEditar_perfil1;
     private javax.swing.JButton btnEditar_perfil2;
@@ -265,22 +242,18 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JPanel main;
     private javax.swing.JPanel sidebar;
     // End of variables declaration//GEN-END:variables

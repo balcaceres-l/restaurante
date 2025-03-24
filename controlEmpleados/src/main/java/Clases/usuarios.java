@@ -1,4 +1,7 @@
 package Clases;
+
+import java.util.Date;
+
 public class usuarios {
     int idUsuario;
     int idRol;
@@ -7,7 +10,7 @@ public class usuarios {
     String nombre;
     String apellido;
     String correo;
-    
+    Date inicio;
     public usuarios() {
     }
 
@@ -20,15 +23,7 @@ public class usuarios {
         this.password = password;
     }
 
-    public usuarios(int idUsuario, int idRol, String usuario, String password, String nombre, String apellido, String correo) {
-        this.idUsuario = idUsuario;
-        this.idRol = idRol;
-        this.usuario = usuario;
-        this.password = password;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-    }
+    
 
     public usuarios(int idRol, String usuario, String password, String nombre, String apellido, String correo) {
         this.idRol = idRol;
