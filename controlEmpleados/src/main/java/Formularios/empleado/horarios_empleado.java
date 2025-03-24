@@ -27,142 +27,41 @@ public class horarios_empleado extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         main = new javax.swing.JPanel();
-        sidebar = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        btnEditar_perfil = new javax.swing.JButton();
-        btnEditar_perfil1 = new javax.swing.JButton();
-        btnEditar_perfil2 = new javax.swing.JButton();
-        btnGuardarYsalir = new javax.swing.JButton();
-        btnEditar_perfil6 = new javax.swing.JButton();
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHorarios_empleado = new javax.swing.JTable();
         btnLiberarTurno = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBorder(null);
 
         main.setBackground(new java.awt.Color(255, 255, 255));
         main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        sidebar.setBackground(new java.awt.Color(0, 51, 102));
-
-        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MENÚ PRINCIPAL");
-
-        btnEditar_perfil.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil.setText("HORARIOS");
-        btnEditar_perfil.setBorder(null);
-        btnEditar_perfil.setBorderPainted(false);
-
-        btnEditar_perfil1.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil1.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil1.setText("EDITAR PERFIL");
-        btnEditar_perfil1.setBorder(null);
-        btnEditar_perfil1.setBorderPainted(false);
-
-        btnEditar_perfil2.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil2.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil2.setText("PAGOS");
-        btnEditar_perfil2.setBorder(null);
-        btnEditar_perfil2.setBorderPainted(false);
-
-        btnGuardarYsalir.setBackground(new java.awt.Color(0, 102, 153));
-        btnGuardarYsalir.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnGuardarYsalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarYsalir.setText("GUARDAR Y SALIR");
-        btnGuardarYsalir.setBorder(null);
-        btnGuardarYsalir.setBorderPainted(false);
-
-        btnEditar_perfil6.setBackground(new java.awt.Color(0, 102, 153));
-        btnEditar_perfil6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnEditar_perfil6.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil6.setText("SOLICITUDES");
-        btnEditar_perfil6.setBorder(null);
-        btnEditar_perfil6.setBorderPainted(false);
-
-        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
-        sidebar.setLayout(sidebarLayout);
-        sidebarLayout.setHorizontalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(sidebarLayout.createSequentialGroup()
-                        .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(sidebarLayout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(jSeparator1))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE))
-                    .addComponent(btnEditar_perfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnGuardarYsalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        sidebarLayout.setVerticalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(btnEditar_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 162, Short.MAX_VALUE)
-                .addComponent(btnGuardarYsalir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(sidebarLayout.createSequentialGroup()
-                    .addGap(137, 137, 137)
-                    .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(323, Short.MAX_VALUE)))
-            .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, sidebarLayout.createSequentialGroup()
-                    .addContainerGap(286, Short.MAX_VALUE)
-                    .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(174, 174, 174)))
-        );
-
-        main.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         header.setBackground(new java.awt.Color(102, 153, 255));
+
+        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel2.setText("HORARIOS");
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
         headerLayout.setHorizontalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(291, 291, 291)
+                .addComponent(jLabel2)
+                .addContainerGap(377, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(headerLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabel2)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 560, -1));
-
-        jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        jLabel2.setText("HORARIOS");
-        main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
 
         tblHorarios_empleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -177,14 +76,19 @@ public class horarios_empleado extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblHorarios_empleado);
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 540, 280));
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 780, 280));
 
         btnLiberarTurno.setBackground(new java.awt.Color(0, 153, 204));
         btnLiberarTurno.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnLiberarTurno.setForeground(new java.awt.Color(255, 255, 255));
         btnLiberarTurno.setText("LIBERAR TURNO");
         btnLiberarTurno.setEnabled(false);
-        main.add(btnLiberarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 440, 150, 30));
+        main.add(btnLiberarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 150, 40));
+
+        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jButton1.setText("REGRESAR");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,7 +98,9 @@ public class horarios_empleado extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 492, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -202,19 +108,12 @@ public class horarios_empleado extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEditar_perfil;
-    private javax.swing.JButton btnEditar_perfil1;
-    private javax.swing.JButton btnEditar_perfil2;
-    private javax.swing.JButton btnEditar_perfil6;
-    private javax.swing.JButton btnGuardarYsalir;
     private javax.swing.JButton btnLiberarTurno;
     private javax.swing.JPanel header;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel main;
-    private javax.swing.JPanel sidebar;
     private javax.swing.JTable tblHorarios_empleado;
     // End of variables declaration//GEN-END:variables
 }
