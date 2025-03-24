@@ -334,11 +334,27 @@ public class Registro_principal extends javax.swing.JFrame {
         String apellido = jTextField4.getText().trim();
         String clave = jTextField3.getText().trim();
         String correo = jTextField5.getText().trim();
-        int idRol = (jComboBox1.getSelectedIndex() == 0) ? 2 : 1; 
-        if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
+     int idRol = (jComboBox1.getSelectedIndex() == 0) ? 5 : 6; 
+    if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (!usuario.matches("\\d+")) {
+        JOptionPane.showMessageDialog(null, "El usuario debe contener solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (!correo.contains("@")) {
+        JOptionPane.showMessageDialog(null, "El correo debe contener una arroba (@).", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+    if (nombre.equalsIgnoreCase(apellido)) {
+        JOptionPane.showMessageDialog(null, "El nombre y el apellido no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+        return;
+    }
         usuarios nuevoUsuario = new usuarios(idRol, usuario, clave, nombre, apellido, correo);
         usuarios_DAO usuarioDAO = new usuarios_DAO();
         usuarioDAO.AgregarUsuario(nuevoUsuario);

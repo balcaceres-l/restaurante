@@ -14,24 +14,55 @@ import javax.swing.JOptionPane;
     
 public class usuarios_DAO {
     ResultSet rs;
-    public String validarUsuario(String usuario, String clave) {
-        String mensaje = null;
-        String rol = null;
+    public usuarios validarUsuario(String usuario, String clave) {
+        usuarios usuarioAutenticado = null;  // Objeto de tipo usuarios para almacenar los datos
         Connection con = Conexion.getInstancia().getConec();
-        String sql = "{call ValidarUsuario(?, ?, ?, ?)}";
+        String sql = "{call ValidarUsuario(?, ?, ?, ?, ?)}";  // Llamada al procedimiento almacenado
+
         try (CallableStatement stmt = con.prepareCall(sql)) {
+            // Establecer los parámetros de entrada
+            String claveEncriptada = encriptar(clave);
             stmt.setString(1, usuario);
-            stmt.setString(2, clave);
-            stmt.registerOutParameter(3, Types.VARCHAR); 
-            stmt.registerOutParameter(4, Types.VARCHAR); 
+            stmt.setString(2, claveEncriptada);
+
+            // Registrar los parámetros de salida
+            stmt.registerOutParameter(3, Types.VARCHAR);  // Para el mensaje
+            stmt.registerOutParameter(4, Types.VARCHAR);  // Para el rol
+            stmt.registerOutParameter(5, Types.INTEGER);  // Para el ID del usuario
+
+            // Ejecutar el procedimiento
             stmt.execute();
-            mensaje = stmt.getString(3);
-            rol = stmt.getString(4);
+
+            // Obtener los parámetros de salida
+            String mensaje = stmt.getString(3);
+            String rol = stmt.getString(4);
+            int idUsuario = stmt.getInt(5);  // Obtener el ID del usuario
+
+            // Verificar si la autenticación fue exitosa
+            if (idUsuario != -1 && rol != null) {
+                usuarioAutenticado = new usuarios(idUsuario, getRolId(rol), usuario, clave);
+            } else {
+                usuarioAutenticado = null;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            mensaje = "Error en la validación del usuario.";
+            usuarioAutenticado = null; 
         }
-        return mensaje + (rol != null ? ", Rol: " + rol : "");
+
+        return usuarioAutenticado;  
+    }
+
+    private int getRolId(String rol) {
+        switch (rol) {
+            case "Administrador":
+                return 1;
+            case "Supervisor":
+                return 5;
+            case "Usuario normal":
+                return 6;
+            default:
+                return -1;  
+        }
     }
     public void AgregarUsuario(usuarios usuario){
         
