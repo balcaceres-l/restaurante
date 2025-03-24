@@ -14,6 +14,7 @@ import clasesDAO.*;
 import clasesDAO.usuarios_DAO;
 import Formularios.admin.Principal;
 import Formularios.empleado.Principal_empleado;
+import java.awt.Color;
 import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 public class Login extends javax.swing.JFrame {
@@ -72,6 +73,11 @@ public class Login extends javax.swing.JFrame {
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("Ingrese su nombre de usuario");
         jTextField1.setBorder(null);
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField1MousePressed(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
@@ -89,8 +95,13 @@ public class Login extends javax.swing.JFrame {
 
         jPasswordField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("********");
         jPasswordField1.setBorder(null);
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPasswordField1MousePressed(evt);
+            }
+        });
         desktopPane.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 410, 30));
 
         btnEntrar.setBackground(new java.awt.Color(102, 153, 255));
@@ -295,6 +306,31 @@ public class Login extends javax.swing.JFrame {
         Registro_principal principal= new Registro_principal();
         principal.setVisible(true);
     }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
+       
+        if (jTextField1.getText().equals("Ingrese su nombre de usuario")){
+            jTextField1.setText("");
+            jTextField1.setForeground(Color.black);   
+        }
+        
+        if(String.valueOf(jPasswordField1.getPassword()).isEmpty()){
+             jPasswordField1.setText("********");
+             jPasswordField1.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jTextField1MousePressed
+
+    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+             if(String.valueOf(jPasswordField1.getPassword()).equals("********")){
+                jPasswordField1.setText("");
+                 jPasswordField1.setForeground(Color.black);
+        }
+             
+              if(jTextField1.getText().isEmpty()){
+             jTextField1.setText("Ingrese su nombre de usuario");
+             jTextField1.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jPasswordField1MousePressed
 
     /**
      * @param args the command line arguments

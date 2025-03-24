@@ -1,18 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
- */
 package Formularios;
     import clasesDAO.*;
     import Clases.*;
     import Clases.Conexion;
+    import Formularios.admin.Principal;
+    import Formularios.empleado.Principal_empleado;
     import clasesDAO.usuarios_DAO;
+import java.awt.Color;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 public class Registro_principal extends javax.swing.JFrame {
 
     usuarios_DAO usuario;
     public Registro_principal() {
         initComponents();
+       
     }
 
     /**
@@ -25,352 +29,396 @@ public class Registro_principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
+        main = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        btnRegistro = new javax.swing.JPanel();
-        btnSalir = new javax.swing.JPanel();
-        jLabel8 = new javax.swing.JLabel();
-        sidebar = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jPasswordField2 = new javax.swing.JPasswordField();
         jSeparator4 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jSeparator5 = new javax.swing.JSeparator();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jSeparator6 = new javax.swing.JSeparator();
-        btnRegistro1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        btnsalir_registro = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jSeparator7 = new javax.swing.JSeparator();
+        btn_registro = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         desktopPane.setBackground(new java.awt.Color(255, 255, 255));
         desktopPane.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        main.setBackground(new java.awt.Color(255, 255, 255));
+        main.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 290, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 580, Short.MAX_VALUE)
+        );
+
+        main.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 0, 290, 580));
+
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
         jLabel2.setText("USUARIO");
-        desktopPane.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        main.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jTextField1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(204, 204, 204));
         jTextField1.setText("Ingrese su nombre de usuario");
         jTextField1.setBorder(null);
+        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField1MousePressed(evt);
+            }
+        });
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField1ActionPerformed(evt);
             }
         });
-        desktopPane.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 40, 410, 30));
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 420, 30));
 
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+        main.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 410, 10));
 
-        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel3.setText("NOMBRE");
-        desktopPane.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jLabel4.setText("NOMBRE");
+        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, -1, -1));
 
         jTextField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setText("Ingrese su nombre ");
+        jTextField2.setText("Ingrese su apellido");
         jTextField2.setBorder(null);
+        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField2MousePressed(evt);
+            }
+        });
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
-        desktopPane.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 410, 30));
+        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 420, 30));
 
-        jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel4.setText("CLAVE");
-        desktopPane.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 80, 20));
+        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
+        main.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 410, 10));
+
+        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jLabel5.setText("CLAVE");
+        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 300, -1, -1));
+
+        jPasswordField2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jPasswordField2.setForeground(new java.awt.Color(204, 204, 204));
+        jPasswordField2.setText("jPasswordField1");
+        jPasswordField2.setBorder(null);
+        jPasswordField2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPasswordField2MousePressed(evt);
+            }
+        });
+        main.add(jPasswordField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 410, 30));
+
+        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
+        main.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 410, 10));
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jLabel6.setText("CORREO");
+        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 370, -1, -1));
 
         jTextField3.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField3.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField3.setText("Ingrese su clave");
+        jTextField3.setText("Ingrese su correo");
         jTextField3.setBorder(null);
+        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField3MousePressed(evt);
+            }
+        });
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
-        desktopPane.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 260, 410, 30));
-
-        jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel5.setText("ROL");
-        desktopPane.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 390, 40, 20));
-
-        jComboBox1.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supervisor ", "Trabajador" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
-            }
-        });
-        desktopPane.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 230, 40));
-
-        btnRegistro.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegistro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout btnRegistroLayout = new javax.swing.GroupLayout(btnRegistro);
-        btnRegistro.setLayout(btnRegistroLayout);
-        btnRegistroLayout.setHorizontalGroup(
-            btnRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        btnRegistroLayout.setVerticalGroup(
-            btnRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        desktopPane.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 460, -1, -1));
-
-        btnSalir.setBackground(new java.awt.Color(255, 255, 255));
-        btnSalir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(51, 153, 255)));
-        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("SALIR");
-        jLabel8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel8MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout btnSalirLayout = new javax.swing.GroupLayout(btnSalir);
-        btnSalir.setLayout(btnSalirLayout);
-        btnSalirLayout.setHorizontalGroup(
-            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnSalirLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11))
-        );
-        btnSalirLayout.setVerticalGroup(
-            btnSalirLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnSalirLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        desktopPane.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 470, 110, 40));
-
-        sidebar.setBackground(new java.awt.Color(102, 153, 255));
-
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("REGISTRARSE");
-        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout sidebarLayout = new javax.swing.GroupLayout(sidebar);
-        sidebar.setLayout(sidebarLayout);
-        sidebarLayout.setHorizontalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        sidebarLayout.setVerticalGroup(
-            sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(sidebarLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
-                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(237, 237, 237))
-        );
-
-        desktopPane.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 0, 300, 550));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 410, 10));
-
-        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, 410, 10));
+        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 390, 420, 30));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 410, 10));
+        main.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 420, 410, 10));
 
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel9.setText("APELLIDO");
-        desktopPane.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jLabel7.setText("ROL");
+        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 440, -1, -1));
+
+        jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
+        jLabel3.setText("APELLIDO");
+        main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+        main.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 410, 10));
 
         jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTextField4.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField4.setText("Ingrese su apellido");
+        jTextField4.setText("Ingrese su nombre ");
         jTextField4.setBorder(null);
+        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jTextField4MousePressed(evt);
+            }
+        });
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
-        desktopPane.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 410, 30));
+        main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 420, 30));
 
-        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 410, 10));
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 36)); // NOI18N
+        jLabel1.setText("REGISTRO");
+        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
-        btnRegistro1.setBackground(new java.awt.Color(102, 153, 255));
-        btnRegistro1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Supervisor", "Trabajador" }));
+        main.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 470, 230, 40));
 
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("REGISTRARSE");
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel7.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jLabel7AncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnsalir_registro.setBackground(new java.awt.Color(255, 255, 255));
+        btnsalir_registro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        btnsalir_registro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("SALIR");
+        jLabel10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                jLabel10MouseClicked(evt);
             }
         });
 
-        javax.swing.GroupLayout btnRegistro1Layout = new javax.swing.GroupLayout(btnRegistro1);
-        btnRegistro1.setLayout(btnRegistro1Layout);
-        btnRegistro1Layout.setHorizontalGroup(
-            btnRegistro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+        javax.swing.GroupLayout btnsalir_registroLayout = new javax.swing.GroupLayout(btnsalir_registro);
+        btnsalir_registro.setLayout(btnsalir_registroLayout);
+        btnsalir_registroLayout.setHorizontalGroup(
+            btnsalir_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnsalir_registroLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        btnRegistro1Layout.setVerticalGroup(
-            btnRegistro1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 40, Short.MAX_VALUE)
+        btnsalir_registroLayout.setVerticalGroup(
+            btnsalir_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnsalir_registroLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        desktopPane.add(btnRegistro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 470, 130, 40));
+        main.add(btnsalir_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 520, 120, 40));
 
-        jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 14)); // NOI18N
-        jLabel10.setText("CORREO");
-        desktopPane.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 80, 20));
-
-        jTextField5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jTextField5.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField5.setText("Ingrese su correo");
-        jTextField5.setBorder(null);
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+        btn_registro.setBackground(new java.awt.Color(0, 153, 255));
+        btn_registro.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 204)));
+        btn_registro.setForeground(new java.awt.Color(255, 255, 255));
+        btn_registro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btn_registro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btn_registroMouseClicked(evt);
             }
         });
-        desktopPane.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 410, 30));
 
-        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        desktopPane.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 410, 10));
+        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("REGISTRAR");
+        jLabel9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout btn_registroLayout = new javax.swing.GroupLayout(btn_registro);
+        btn_registro.setLayout(btn_registroLayout);
+        btn_registroLayout.setHorizontalGroup(
+            btn_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_registroLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        btn_registroLayout.setVerticalGroup(
+            btn_registroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btn_registroLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        main.add(btn_registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 520, -1, -1));
+
+        desktopPane.add(main, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
+
+        if (jTextField1.getText().equals("Ingrese su nombre de usuario")){
+            jTextField1.setText("");
+            jTextField1.setForeground(Color.black);
+        }
+
+        if(String.valueOf(jPasswordField2.getPassword()).isEmpty()){
+            jPasswordField2.setText("********");
+            jPasswordField2.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jTextField1MousePressed
+
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
+    
+    
+    
+    private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
+
+        if (jTextField1.getText().equals("Ingrese su nombre de usuario")){
+            jTextField1.setText("");
+            jTextField1.setForeground(Color.black);
+        }
+
+        if(String.valueOf(jPasswordField2.getPassword()).isEmpty()){
+            jPasswordField2.setText("********");
+            jPasswordField2.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jTextField2MousePressed
+
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField2ActionPerformed
 
+    private void jPasswordField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField2MousePressed
+        if(String.valueOf(jPasswordField2.getPassword()).equals("********")){
+            jPasswordField2.setText("");
+            jPasswordField2.setForeground(Color.black);
+        }
+
+        if(jTextField1.getText().isEmpty()){
+            jTextField1.setText("Ingrese su apellido");
+            jTextField1.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jPasswordField2MousePressed
+
+    private void jTextField3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MousePressed
+
+        if (jTextField1.getText().equals("Ingrese su correo")){
+            jTextField1.setText("");
+            jTextField1.setForeground(Color.black);
+        }
+
+        if(String.valueOf(jPasswordField2.getPassword()).isEmpty()){
+            jPasswordField2.setText("********");
+            jPasswordField2.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jTextField3MousePressed
+
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField3ActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    private void jTextField4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MousePressed
+        if (jTextField4.getText().equals("Ingrese su nombre")){
+            jTextField4.setText("");
+            jTextField4.setForeground(Color.black);
+        }
+
+        if(String.valueOf(jPasswordField2.getPassword()).isEmpty()){
+            jPasswordField2.setText("********");
+            jPasswordField2.setForeground(Color.gray);
+        }
+    }//GEN-LAST:event_jTextField4MousePressed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        
+    }//GEN-LAST:event_jLabel9MouseClicked
 
-    private void jLabel7AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel7AncestorAdded
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel7AncestorAdded
+    }//GEN-LAST:event_jLabel10MouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void btn_registroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_registroMouseClicked
+        this.registro();
+    }//GEN-LAST:event_btn_registroMouseClicked
+    public void registro(){
         String usuario = jTextField1.getText().trim();
-        String nombre = jTextField2.getText().trim();
-        String apellido = jTextField4.getText().trim();
-        String clave = jTextField3.getText().trim();
-        String correo = jTextField5.getText().trim();
-     int idRol = (jComboBox1.getSelectedIndex() == 0) ? 5 : 6; 
-    if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (!usuario.matches("\\d+")) {
-        JOptionPane.showMessageDialog(null, "El usuario debe contener solo números.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (!correo.contains("@")) {
-        JOptionPane.showMessageDialog(null, "El correo debe contener una arroba (@).", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-    if (nombre.equalsIgnoreCase(apellido)) {
-        JOptionPane.showMessageDialog(null, "El nombre y el apellido no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-        usuarios nuevoUsuario = new usuarios(idRol, usuario, clave, nombre, apellido, correo);
-        usuarios_DAO usuarioDAO = new usuarios_DAO();
-        usuarioDAO.AgregarUsuario(nuevoUsuario);
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField4.setText("");
-        jTextField5.setText("");
-    }//GEN-LAST:event_jLabel7MouseClicked
-
-    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-        Login inicio= new Login();
-        inicio.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jLabel8MouseClicked
-
+        String nombre = jTextField4.getText().trim();
+        String apellido = jTextField2.getText().trim();
+        String clave = jPasswordField2.getText().trim();
+        String correo = jTextField3.getText().trim();
+        int idRol = (jComboBox1.getSelectedIndex() == 0) ? 5 : 6; 
+        if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+       if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (!usuario.matches("\\d+")) {
+           JOptionPane.showMessageDialog(null, "El usuario debe contener solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (!correo.contains("@")) {
+           JOptionPane.showMessageDialog(null, "El correo debe contener una arroba (@).", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (nombre.equalsIgnoreCase(apellido)) {
+           JOptionPane.showMessageDialog(null, "El nombre y el apellido no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+           usuarios nuevoUsuario = new usuarios(idRol, usuario, clave, nombre, apellido, correo);
+           usuarios_DAO usuarioDAO = new usuarios_DAO();
+           usuarioDAO.AgregarUsuario(nuevoUsuario);
+           jTextField1.setText("");
+           jTextField2.setText("");
+           jTextField3.setText("");
+           jTextField4.setText("");
+          
+       }
     /**
      * @param args the command line arguments
      */
@@ -407,11 +455,12 @@ public class Registro_principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel btnRegistro;
-    private javax.swing.JPanel btnRegistro1;
     private javax.swing.JPanel btnSalir;
+    private javax.swing.JPanel btn_registro;
+    private javax.swing.JPanel btnsalir_registro;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -421,19 +470,18 @@ public class Registro_principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JPanel sidebar;
+    private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 
 }
