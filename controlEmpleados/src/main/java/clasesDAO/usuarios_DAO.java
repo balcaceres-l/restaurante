@@ -14,31 +14,22 @@ import javax.swing.JOptionPane;
     
 public class usuarios_DAO {
     ResultSet rs;
+    Connection con;
     public usuarios validarUsuario(String usuario, String clave) {
-        usuarios usuarioAutenticado = null;  // Objeto de tipo usuarios para almacenar los datos
-        Connection con = Conexion.getInstancia().getConec();
-        String sql = "{call ValidarUsuario(?, ?, ?, ?, ?)}";  // Llamada al procedimiento almacenado
-
+        usuarios usuarioAutenticado = null;  
+        con = Conexion.getInstancia().getConec();
+        String sql = "{call ValidarUsuario(?, ?, ?, ?, ?)}";  
         try (CallableStatement stmt = con.prepareCall(sql)) {
-            // Establecer los parámetros de entrada
             String claveEncriptada = encriptar(clave);
             stmt.setString(1, usuario);
             stmt.setString(2, claveEncriptada);
-
-            // Registrar los parámetros de salida
-            stmt.registerOutParameter(3, Types.VARCHAR);  // Para el mensaje
-            stmt.registerOutParameter(4, Types.VARCHAR);  // Para el rol
-            stmt.registerOutParameter(5, Types.INTEGER);  // Para el ID del usuario
-
-            // Ejecutar el procedimiento
+            stmt.registerOutParameter(3, Types.VARCHAR);  
+            stmt.registerOutParameter(4, Types.VARCHAR);  
+            stmt.registerOutParameter(5, Types.INTEGER);  
             stmt.execute();
-
-            // Obtener los parámetros de salida
             String mensaje = stmt.getString(3);
             String rol = stmt.getString(4);
-            int idUsuario = stmt.getInt(5);  // Obtener el ID del usuario
-
-            // Verificar si la autenticación fue exitosa
+            int idUsuario = stmt.getInt(5);  
             if (idUsuario != -1 && rol != null) {
                 usuarioAutenticado = new usuarios(idUsuario, getRolId(rol), usuario, clave);
             } else {
@@ -66,7 +57,7 @@ public class usuarios_DAO {
     }
     public void AgregarUsuario(usuarios usuario){
         
-        Connection con= Conexion.getInstancia().getConec();
+        con= Conexion.getInstancia().getConec();
         if (existeUsuario(usuario.getUsuario())) {
             JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe. Por favor, elige otro.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -86,12 +77,25 @@ public class usuarios_DAO {
             System.out.println(e.getMessage());
         }
     }
+    
+    public void editar(usuarios usuario){
+        con=Conexion.getInstancia().getConec();
+        String sql ="{CALL sp_EditarUsuario(?,?,?)}";
+        try (CallableStatement stmt = con.prepareCall(sql)){
+            stmt.setInt(1,usuario.getIdUsuario());
+            stmt.setString(2,usuario.getNombre());
+            stmt.setString(3,usuario.getApellido());
+            stmt.executeUpdate();
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
     public  boolean existeUsuario(String usuario) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = ?";
 
         try (PreparedStatement stmt = Conexion.getInstancia().getConec().prepareStatement(sql)) {
             stmt.setString(1, usuario);
-            ResultSet rs = stmt.executeQuery();
+            rs = stmt.executeQuery();
             if (rs.next()) {
                 return rs.getInt(1) > 0; 
             }
@@ -115,5 +119,49 @@ public class usuarios_DAO {
         }
         return null;
     }
-    
+    public usuarios obtenerUsuarioPorId(int idUsuario) {
+        con = Conexion.getInstancia().getConec();
+        usuarios usuario = null;
+        
+        String sql = "{CALL sp_ObtenerUsuarioInfo(?)}";
+        
+        try (CallableStatement stmt = con.prepareCall(sql)) {
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs.next()) {
+                usuario = new usuarios(
+                    rs.getString("usuario"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getString("rol"),
+                    rs.getDate("fecha_inicio")
+                );
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener usuario: " + e);
+        }
+        return usuario;
+    }
+    public ArrayList<usuarios> obtenerTodosLosUsuarios() {
+        ArrayList<usuarios> listaUsuarios = new ArrayList<>();
+        Connection con = Conexion.getInstancia().getConec();
+        String sql = "{CALL sp_ObtenerEmpleadosRol6()}";
+        
+        try (CallableStatement ps = con.prepareCall(sql)) {
+             rs = ps.executeQuery();
+            while (rs.next()) {
+                usuarios usuario = new usuarios(
+                    rs.getInt("id_empleado"),
+                    rs.getString("nombre"),
+                    rs.getString("apellido"),
+                    rs.getDate("fechaContratacion")
+                );
+                listaUsuarios.add(usuario);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al obtener usuarios: " + e);
+        }
+        return listaUsuarios;
+    }
 }

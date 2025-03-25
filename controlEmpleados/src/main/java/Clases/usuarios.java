@@ -1,4 +1,7 @@
 package Clases;
+
+import java.util.Date;
+
 public class usuarios {
     int idUsuario;
     int idRol;
@@ -7,10 +10,12 @@ public class usuarios {
     String nombre;
     String apellido;
     String correo;
+    Date inicio;
+    String rol;
     
     public usuarios() {
     }
-
+    
     public usuarios(int idUsuario, int idRol,  String usuario,  String password) {
         this.idUsuario = idUsuario;
         this.idRol = idRol;
@@ -19,16 +24,8 @@ public class usuarios {
   
         this.password = password;
     }
-
-    public usuarios(int idUsuario, int idRol, String usuario, String password, String nombre, String apellido, String correo) {
-        this.idUsuario = idUsuario;
-        this.idRol = idRol;
-        this.usuario = usuario;
-        this.password = password;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.correo = correo;
-    }
+    
+    
 
     public usuarios(int idRol, String usuario, String password, String nombre, String apellido, String correo) {
         this.idRol = idRol;
@@ -48,10 +45,35 @@ public class usuarios {
         this.password = password;
     }
 
+    public usuarios(String usuario, String nombre, String apellido, String rol, Date inicio) {
+        this.usuario = usuario;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.rol = rol;
+        this.inicio = inicio;
+        
+    }
+
+    public usuarios(int idEmpleado, String nombre, String apellido, Date inicio) {
+        this.idUsuario = idEmpleado;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.inicio = inicio;
+    }
+    
+    
     public int getIdUsuario() {
         return idUsuario;
     }
 
+    public Date getInicio() {
+        return inicio;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+    
     public String getNombre() {
         return nombre;
     }
@@ -74,6 +96,14 @@ public class usuarios {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public void setInicio(Date inicio) {
+        this.inicio = inicio;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     

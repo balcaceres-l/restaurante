@@ -4,13 +4,14 @@
  */
 package Formularios.empleado;
 
-/**
- *
- * @author david
- */
+import clasesDAO.usuarios_DAO;
+import Clases.usuarios;
+import javax.swing.JOptionPane;
 public class editarUsuario_empleado extends javax.swing.JInternalFrame {
 
     int id;
+    usuarios_DAO users;
+    usuarios usuario;
     public editarUsuario_empleado() {
         initComponents();
     }
@@ -18,6 +19,7 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         initComponents();
         this.id=id;
         jTextField1.setText(String.valueOf(id));
+        this.cargar();
     }
 
     /**
@@ -34,22 +36,19 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jTextField9 = new javax.swing.JTextField();
 
         setBorder(null);
         setResizable(true);
@@ -69,7 +68,7 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(257, 257, 257)
                 .addComponent(jLabel2)
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(302, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +78,7 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
                 .addContainerGap(38, Short.MAX_VALUE))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
 
         jLabel3.setText("ID:");
         main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 20, 20));
@@ -87,55 +86,53 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
         jTextField1.setEnabled(false);
         main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 80, -1));
 
-        jLabel4.setText("ID EMPLEADO:");
-        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 80, 20));
-
-        jTextField2.setEnabled(false);
-        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 80, -1));
-
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setText("NOMBRE");
-        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel6.setText("USUARIO");
-        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel7.setText("CLAVE");
-        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jLabel6.setText("APELLIDO");
+        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
         main.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 800, 10));
 
         jLabel8.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel8.setText("ROL");
-        main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
-
-        jLabel9.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel9.setText("PUESTO");
-        main.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 400, 60, -1));
+        main.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel10.setText("INICIÓ");
-        main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 440, -1, -1));
+        main.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, -1, -1));
 
         jTextField3.setEnabled(false);
-        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, 160, 30));
-        main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 160, 30));
-        main.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, 30));
-
-        jTextField6.setEnabled(false);
-        main.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 160, 30));
+        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 160, 30));
+        main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 160, 30));
+        main.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 160, 30));
 
         jTextField7.setEnabled(false);
-        main.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, 160, 30));
-
-        jTextField8.setEnabled(false);
-        main.add(jTextField8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 390, 160, 30));
+        main.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 160, 30));
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
         main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 450, 130, 40));
+
+        btnGuardar.setBackground(new java.awt.Color(0, 102, 153));
+        btnGuardar.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("GUARDAR CAMBIOS");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        main.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 450, -1, 40));
+
+        jLabel11.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel11.setText("USUARIO");
+        main.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+
+        jTextField9.setEditable(false);
+        main.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, 160, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -150,29 +147,68 @@ public class editarUsuario_empleado extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void cargar(){
+        try {
+             // Obtener y convertir el ID
+
+            usuarios_DAO usuariosDAO = new usuarios_DAO();
+            usuarios usuario = usuariosDAO.obtenerUsuarioPorId(id);
+
+            if (usuario != null) {
+                jTextField4.setText(usuario.getNombre());
+                jTextField9.setText(usuario.getUsuario());
+                jTextField5.setText(usuario.getApellido());
+                jTextField7.setText(usuario.getRol());
+                jTextField3.setText(usuario.getInicio() != null ? usuario.getInicio().toString() : "");
+            } else {
+                System.out.println("No se encontró el usuario con ID: " + id);
+            }
+        } catch (NumberFormatException e) {
+            System.out.println("Error: El ID de usuario no es un número válido.");
+        }
+    }
+    public void editar(){
+        users= new usuarios_DAO();
+        usuario= new usuarios();
+        String us= jTextField4.getText().trim();
+        String apellido= jTextField5.getText().trim();
+        if (us.isEmpty()|| apellido.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        usuario.setIdUsuario(id);
+        usuario.setUsuario(us);
+        usuario.setApellido(apellido);
+        try {
+            users.editar(usuario);
+            JOptionPane.showMessageDialog(null, "Datos editados con exito");
+        }catch (Exception e) {
+                System.out.println(e.getMessage());
+        }
+
+    }
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        this.editar();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnGuardar;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
+    private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

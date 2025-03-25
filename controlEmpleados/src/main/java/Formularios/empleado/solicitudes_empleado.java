@@ -79,12 +79,12 @@ public class solicitudes_empleado extends javax.swing.JInternalFrame {
         btnSolicitud.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnSolicitud.setForeground(new java.awt.Color(255, 255, 255));
         btnSolicitud.setText("INGRESAR SOLICITUD");
-        main.add(btnSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 190, 40));
+        main.add(btnSolicitud, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 220, 40));
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
-        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 400, 130, 40));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 130, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
