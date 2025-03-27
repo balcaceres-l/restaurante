@@ -11,6 +11,7 @@ public class usuarios {
     String apellido;
     String correo;
     Date inicio;
+    String puesto;
     String rol;
     
     public usuarios() {
@@ -54,11 +55,12 @@ public class usuarios {
         
     }
 
-    public usuarios(int idEmpleado, String nombre, String apellido, Date inicio) {
+    public usuarios(int idEmpleado, String nombre, String apellido, Date inicio, String puesto) {
         this.idUsuario = idEmpleado;
         this.nombre = nombre;
         this.apellido = apellido;
         this.inicio = inicio;
+        this.puesto=puesto;
     }
     
     
@@ -69,6 +71,16 @@ public class usuarios {
     public Date getInicio() {
         return inicio;
     }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+    
+    
 
     public String getRol() {
         return rol;

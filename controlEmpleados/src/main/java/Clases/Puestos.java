@@ -7,19 +7,24 @@ package Clases;
 public class Puestos {
     int idPuestos;
     int idArea;
+    int idEmpleado;
     String nombrePuesto;
-    double salarioBase;
 
-    public Puestos(int idPuestos, int idArea, String nombrePuesto, double salarioBase) {
+    public Puestos(int idPuestos, int idArea, String nombrePuesto) {
         this.idPuestos = idPuestos;
         this.idArea = idArea;
         this.nombrePuesto = nombrePuesto;
-        this.salarioBase = salarioBase;
+       
     }
 
+    public Puestos(int idEmpleado, String nombrePuesto) {
+        this.idEmpleado = idEmpleado;
+        this.nombrePuesto = nombrePuesto;
+    }
+    
     public Puestos() {
     }
-
+    
     public void setIdPuestos(int idPuestos) {
         this.idPuestos = idPuestos;
     }
@@ -32,9 +37,15 @@ public class Puestos {
         this.nombrePuesto = nombrePuesto;
     }
 
-    public void setSalarioBase(double salarioBase) {
-        this.salarioBase = salarioBase;
+    public int getIdEmpleado() {
+        return idEmpleado;
     }
+
+    public void setIdEmpleado(int idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    
 
     public int getIdPuestos() {
         return idPuestos;
@@ -48,9 +59,7 @@ public class Puestos {
         return nombrePuesto;
     }
 
-    public double getSalarioBase() {
-        return salarioBase;
-    }
+    
     
     
 }

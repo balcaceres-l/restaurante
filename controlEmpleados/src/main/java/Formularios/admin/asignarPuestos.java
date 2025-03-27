@@ -4,9 +4,12 @@
  */
 package Formularios.admin;
 
+import Clases.Puestos;
 import Clases.usuarios;
+import clasesDAO.empleados_DAO;
 import clasesDAO.usuarios_DAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,15 +30,33 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         listausuarios= user.obtenerTodosLosUsuarios();
         model1.setRowCount(0);
         for (usuarios usuario : listausuarios) {
-        model1.addRow(new Object[]{
+            model1.addRow(new Object[]{
             usuario.getIdUsuario(),
             usuario.getNombre(),
             usuario.getApellido(),
-            usuario.getInicio() // fecha de contratación
+            usuario.getInicio(),
+            usuario.getPuesto()
         });
+        }
     }
-    }
+    public void asignarPuestoDesdeUI() {
+        int filaSeleccionada = jTable1.getSelectedRow();
 
+        if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un empleado en la tabla.");
+            return;
+        }
+        int idEmpleado = (int) jTable1.getValueAt(filaSeleccionada, 0);
+        String nombrePuesto = cbxPuesto.getSelectedItem().toString();
+        Puestos puesto = new Puestos(idEmpleado, nombrePuesto);
+        empleados_DAO puestoDAO = new empleados_DAO();
+        boolean asignado = puestoDAO.asignarPuesto(puesto);
+        if (!asignado) {
+            JOptionPane.showMessageDialog(null, "Puesto asignado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(null, "Error al asignar el puesto.");
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -112,17 +133,17 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Número de empleado", "Nombre", "Apellido", "Fecha Contratacion"
+                "Número de empleado", "Nombre", "Apellido", "Fecha Contratacion", "Puesto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -143,6 +164,11 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         btnGuardarEmpleado2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnGuardarEmpleado2.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarEmpleado2.setText("GUARDAR");
+        btnGuardarEmpleado2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEmpleado2ActionPerformed(evt);
+            }
+        });
         main.add(btnGuardarEmpleado2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, 30));
 
         jTextField1.setText("Buscar");
@@ -151,10 +177,10 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("Informacion del Salario de Acuerdo al puesto\n\n1- Chef $3200.59\n");
+        jTextArea1.setText("Informacion del Salario de Acuerdo al puesto\n\n1- Chef $3200.59\n2- Bodeguero $589.89\n3- Cocinero $800.14\n4- Bar Tender $788.63\n5- Recepcionista 456.12\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 220, 170));
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,6 +201,11 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         us.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirEmpleadoActionPerformed
+
+    private void btnGuardarEmpleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleado2ActionPerformed
+        this.asignarPuestoDesdeUI();
+        this.cargar();
+    }//GEN-LAST:event_btnGuardarEmpleado2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

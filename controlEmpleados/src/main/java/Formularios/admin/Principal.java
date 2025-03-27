@@ -18,7 +18,7 @@ public class Principal extends javax.swing.JFrame {
         this.id=id;
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -211,7 +211,9 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEditar_perfil1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil1ActionPerformed
-        
+        editarPerfil_admin us = new editarPerfil_admin(id);
+        us.setVisible(true);
+        jDesktopPane1.add(us);
     }//GEN-LAST:event_btnEditar_perfil1ActionPerformed
 
     private void btnEditar_perfil7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil7ActionPerformed

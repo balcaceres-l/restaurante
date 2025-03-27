@@ -155,7 +155,8 @@ public class usuarios_DAO {
                     rs.getInt("id_empleado"),
                     rs.getString("nombre"),
                     rs.getString("apellido"),
-                    rs.getDate("fechaContratacion")
+                    rs.getDate("fechaContratacion"),
+                    rs.getString("nombre_puesto")
                 );
                 listaUsuarios.add(usuario);
             }

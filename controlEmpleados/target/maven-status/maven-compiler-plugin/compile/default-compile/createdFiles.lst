@@ -7,17 +7,20 @@ Formularios\admin\asignarHorarios_admin.class
 Formularios\empleado\Principal_empleado$2.class
 Formularios\Registro_principal$2.class
 Formularios\Registro_principal$5.class
+Formularios\admin\editarPerfil_admin$3.class
 Formularios\admin\Principal$2.class
 Clases\EstadoUtensilios.class
 clasesDAO\pagos_DAO.class
 Formularios\Login$5.class
 Clases\Conexion.class
 Formularios\admin\editarIngredientes_admin.class
+Formularios\admin\editarPerfil_admin.class
 Clases\CategoriaUtensilio.class
 clasesDAO\categoriaUtensilios_DAO.class
 Formularios\Registro_principal$8.class
 Formularios\Login$7.class
 Clases\Utensilios.class
+Formularios\admin\editarPerfil_admin$4.class
 Clases\Proveedor.class
 Formularios\admin\agregarIngredientes_admin.class
 Formularios\admin\Principal$3.class
@@ -28,6 +31,7 @@ Formularios\Login$4.class
 Formularios\Registro_principal.class
 clasesDAO\categoriaIngredientes_DAO.class
 Formularios\Registro_principal$13.class
+Formularios\admin\asignarPuestos$3.class
 clasesDAO\inventarioUtensilios_DAO.class
 Formularios\admin\editarEmpleado_admin.class
 Formularios\Registro_principal$4.class
@@ -51,6 +55,9 @@ Formularios\empleado\Principal_empleado$1.class
 Formularios\Registro_principal$3.class
 clasesDAO\horarios_DAO.class
 Formularios\Login$3.class
+Formularios\empleado\Consumir.class
+Formularios\admin\editarPerfil_admin$1.class
+Formularios\admin\agregarRecetas.class
 Formularios\Registro_principal$6.class
 Clases\auditorias.class
 Clases\horario.class
@@ -68,6 +75,7 @@ Formularios\admin\empleados_admin.class
 Clases\usuarios.class
 Clases\Areas.class
 Formularios\Registro_principal$9.class
+Formularios\admin\editarPerfil_admin$2.class
 Formularios\empleado\editarUsuario_empleado$1.class
 Formularios\admin\Principal$1.class
 Formularios\admin\registro_admin.class
