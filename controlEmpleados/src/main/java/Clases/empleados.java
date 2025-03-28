@@ -10,6 +10,9 @@ public class empleados {
     int idPuesto;
     int idHorario;
     Date fechaContratacion;
+    String nombre;
+    String rol;
+   
     public empleados() {
     }
 
@@ -21,6 +24,30 @@ public class empleados {
         this.fechaContratacion=fechaContratacion;
     }
 
+    public empleados(int idUsuario, String nombre, String rol, Date fechaContratacion) {
+        this.idUsuario = idUsuario;
+        
+        this.nombre = nombre;
+        this.rol = rol;
+        this.fechaContratacion = fechaContratacion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+    
     public int getIdHorario() {
         return idHorario;
     }

@@ -4,17 +4,34 @@
  */
 package Formularios.empleado;
 
+import clasesDAO.empleados_DAO;
+import clasesDAO.usuarios_DAO;
+
 /**
  *
  * @author david
  */
 public class pagos_empleado extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form pagos_empleado
-     */
+    int id;
     public pagos_empleado() {
         initComponents();
+    }
+    public pagos_empleado(int id){
+        initComponents();
+        this.id=id;
+        this.encontrar();
+    }
+    public void encontrar(){
+        usuarios_DAO dao = new usuarios_DAO();
+         // ID del usuario que deseas consultar
+        Integer idEmpleado = dao.obtenerIdEmpleadoPorUsuario(id);
+
+        if (idEmpleado != null) {
+            System.out.println("El ID del empleado es: " + idEmpleado);
+        } else {
+            System.out.println("No se encontró un empleado para el usuario con ID " + id + " o si " + idEmpleado);
+        }
     }
 
     /**
@@ -30,6 +47,9 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jTextField1 = new javax.swing.JTextField();
 
         setBorder(null);
 
@@ -63,17 +83,47 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
-        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 440, 130, 40));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 490, 130, 40));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Nombre", "Puesto", "Salario Base"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 670, 160));
+
+        jTextField1.setText("Buscar");
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 660, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 823, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 535, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -84,6 +134,9 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

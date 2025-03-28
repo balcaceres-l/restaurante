@@ -4,10 +4,7 @@
  */
 package Formularios.admin;
 
-/**
- *
- * @author david
- */
+import Clases.empleados;
 public class asignarHorarios_admin extends javax.swing.JInternalFrame {
 
     /**
@@ -30,6 +27,13 @@ public class asignarHorarios_admin extends javax.swing.JInternalFrame {
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         setBorder(null);
 
@@ -55,27 +59,51 @@ public class asignarHorarios_admin extends javax.swing.JInternalFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(jLabel2)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 90));
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
-        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 420, 130, 40));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 130, 40));
+        main.add(jCalendar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 790, 220));
+
+        jButton2.setText("Asignar");
+        main.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 530, -1, -1));
+
+        jButton3.setText("Editar");
+        main.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 530, -1, -1));
+
+        jButton4.setText("Eliminar");
+        main.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 530, -1, -1));
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 550, 30));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, 710, 130));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 804, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 562, Short.MAX_VALUE)
         );
 
         pack();
@@ -85,7 +113,14 @@ public class asignarHorarios_admin extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

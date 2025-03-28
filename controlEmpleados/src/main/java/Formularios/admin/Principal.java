@@ -60,6 +60,11 @@ public class Principal extends javax.swing.JFrame {
         btnEditar_perfil.setText("HORARIOS");
         btnEditar_perfil.setBorder(null);
         btnEditar_perfil.setBorderPainted(false);
+        btnEditar_perfil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfilActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil1.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -86,6 +91,11 @@ public class Principal extends javax.swing.JFrame {
         btnEditar_perfil3.setText("EMPLEADOS");
         btnEditar_perfil3.setBorder(null);
         btnEditar_perfil3.setBorderPainted(false);
+        btnEditar_perfil3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfil3ActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil4.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -133,7 +143,7 @@ public class Principal extends javax.swing.JFrame {
                                 .addGap(6, 6, 6)
                                 .addComponent(jSeparator1))
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 29, Short.MAX_VALUE))
                     .addComponent(btnEditar_perfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar_perfil3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnEditar_perfil2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -169,42 +179,38 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEditar_perfil7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(120, Short.MAX_VALUE))
             .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(sidebarLayout.createSequentialGroup()
                     .addGap(137, 137, 137)
                     .addComponent(btnEditar_perfil1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(423, Short.MAX_VALUE)))
+                    .addContainerGap(453, Short.MAX_VALUE)))
         );
 
-        desktopPane.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
+        desktopPane.add(sidebar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 630));
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 840, Short.MAX_VALUE)
+            .addGap(0, 860, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 630, Short.MAX_VALUE)
         );
 
-        desktopPane.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 840, 600));
+        desktopPane.add(jDesktopPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 0, 860, 630));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1065, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1118, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane)
         );
 
         pack();
@@ -221,6 +227,18 @@ public class Principal extends javax.swing.JFrame {
        us.setVisible(true);
        jDesktopPane1.add(us);
     }//GEN-LAST:event_btnEditar_perfil7ActionPerformed
+
+    private void btnEditar_perfil3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil3ActionPerformed
+        empleados_admin us= new empleados_admin();
+        us.setVisible(true);
+        jDesktopPane1.add(us);
+    }//GEN-LAST:event_btnEditar_perfil3ActionPerformed
+
+    private void btnEditar_perfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfilActionPerformed
+        asignarHorarios_admin us = new asignarHorarios_admin();
+        us.setVisible(true);
+        jDesktopPane1.add(us);
+    }//GEN-LAST:event_btnEditar_perfilActionPerformed
 
     /**
      * @param args the command line arguments

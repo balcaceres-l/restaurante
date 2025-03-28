@@ -10,7 +10,11 @@ import clasesDAO.empleados_DAO;
 import clasesDAO.usuarios_DAO;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -20,10 +24,39 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
     usuarios_DAO user;
     ArrayList<usuarios> listausuarios;
     DefaultTableModel model1;
+    empleados_DAO empleados;
     public asignarPuestos() {
         initComponents();
          model1 = (DefaultTableModel) jTable1.getModel();
          this.cargar();
+         jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+        private void filterTable() {
+            String searchText = jTextField1.getText().trim().toLowerCase();
+            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model1);
+            jTable1.setRowSorter(sorter);
+
+            if (searchText.isEmpty()) {
+                sorter.setRowFilter(null);
+            } else {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+            }
+        }
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            filterTable();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            filterTable();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            filterTable();
+        }
+    });
     }
     public void cargar(){
         user= new usuarios_DAO();
@@ -39,7 +72,7 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         });
         }
     }
-    public void asignarPuestoDesdeUI() {
+    public void asignaroActualizar() {
         int filaSeleccionada = jTable1.getSelectedRow();
 
         if (filaSeleccionada == -1) {
@@ -48,9 +81,9 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         }
         int idEmpleado = (int) jTable1.getValueAt(filaSeleccionada, 0);
         String nombrePuesto = cbxPuesto.getSelectedItem().toString();
-        Puestos puesto = new Puestos(idEmpleado, nombrePuesto);
-        empleados_DAO puestoDAO = new empleados_DAO();
-        boolean asignado = puestoDAO.asignarPuesto(puesto);
+        
+         empleados = new empleados_DAO();
+        boolean asignado = empleados.actualizarOAsignarPuesto(idEmpleado, nombrePuesto);
         if (!asignado) {
             JOptionPane.showMessageDialog(null, "Puesto asignado correctamente.");
         } else {
@@ -74,7 +107,6 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         btnSalirEmpleado = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnGuardarEmpleado1 = new javax.swing.JButton();
         btnGuardarEmpleado2 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -154,12 +186,6 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
 
         main.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 690, 190));
 
-        btnGuardarEmpleado1.setBackground(new java.awt.Color(0, 102, 153));
-        btnGuardarEmpleado1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnGuardarEmpleado1.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardarEmpleado1.setText("Editar");
-        main.add(btnGuardarEmpleado1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, 30));
-
         btnGuardarEmpleado2.setBackground(new java.awt.Color(0, 102, 153));
         btnGuardarEmpleado2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnGuardarEmpleado2.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,13 +229,12 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnSalirEmpleadoActionPerformed
 
     private void btnGuardarEmpleado2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEmpleado2ActionPerformed
-        this.asignarPuestoDesdeUI();
+        this.asignaroActualizar();
         this.cargar();
     }//GEN-LAST:event_btnGuardarEmpleado2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGuardarEmpleado1;
     private javax.swing.JButton btnGuardarEmpleado2;
     private javax.swing.JButton btnSalirEmpleado;
     private javax.swing.JComboBox<String> cbxPuesto;

@@ -15,9 +15,11 @@ import javax.swing.JOptionPane;
 public class usuarios_DAO {
     ResultSet rs;
     Connection con;
+    public  usuarios_DAO(){
+        this.con = Conexion.getInstancia().getConec();
+    }
     public usuarios validarUsuario(String usuario, String clave) {
         usuarios usuarioAutenticado = null;  
-        con = Conexion.getInstancia().getConec();
         String sql = "{call ValidarUsuario(?, ?, ?, ?, ?)}";  
         try (CallableStatement stmt = con.prepareCall(sql)) {
             String claveEncriptada = encriptar(clave);
@@ -56,8 +58,6 @@ public class usuarios_DAO {
         }
     }
     public void AgregarUsuario(usuarios usuario){
-        
-        con= Conexion.getInstancia().getConec();
         if (existeUsuario(usuario.getUsuario())) {
             JOptionPane.showMessageDialog(null, "El nombre de usuario ya existe. Por favor, elige otro.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -79,7 +79,6 @@ public class usuarios_DAO {
     }
     
     public void editar(usuarios usuario){
-        con=Conexion.getInstancia().getConec();
         String sql ="{CALL sp_EditarUsuario(?,?,?)}";
         try (CallableStatement stmt = con.prepareCall(sql)){
             stmt.setInt(1,usuario.getIdUsuario());
@@ -92,8 +91,7 @@ public class usuarios_DAO {
     }
     public  boolean existeUsuario(String usuario) {
         String sql = "SELECT COUNT(*) FROM usuarios WHERE usuario = ?";
-
-        try (PreparedStatement stmt = Conexion.getInstancia().getConec().prepareStatement(sql)) {
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
             stmt.setString(1, usuario);
             rs = stmt.executeQuery();
             if (rs.next()) {
@@ -120,7 +118,6 @@ public class usuarios_DAO {
         return null;
     }
     public usuarios obtenerUsuarioPorId(int idUsuario) {
-        con = Conexion.getInstancia().getConec();
         usuarios usuario = null;
         
         String sql = "{CALL sp_ObtenerUsuarioInfo(?)}";
@@ -145,7 +142,6 @@ public class usuarios_DAO {
     }
     public ArrayList<usuarios> obtenerTodosLosUsuarios() {
         ArrayList<usuarios> listaUsuarios = new ArrayList<>();
-        Connection con = Conexion.getInstancia().getConec();
         String sql = "{CALL sp_ObtenerEmpleadosRol6()}";
         
         try (CallableStatement ps = con.prepareCall(sql)) {
@@ -164,5 +160,28 @@ public class usuarios_DAO {
             System.out.println("Error al obtener usuarios: " + e);
         }
         return listaUsuarios;
+    }
+    public Integer obtenerIdEmpleadoPorUsuario(int idUsuario) {
+        Integer idEmpleado = null;
+        String sql = "{CALL sp_ObtenerIdEmpleado(?, ?)}";
+
+        try (CallableStatement cs = con.prepareCall(sql)) {
+
+            // Asignar parámetros de entrada y salida
+            cs.setInt(1, idUsuario);
+            cs.registerOutParameter(2, Types.INTEGER);
+            cs.execute();
+
+            // Obtener el resultado de salida
+            idEmpleado = cs.getInt(2);
+            if (cs.wasNull()) {  // Si el valor es NULL en SQL, evitar errores en Java
+                idEmpleado = null;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Error al obtener el ID del empleado: " + e.getMessage());
+        }
+
+        return idEmpleado;
     }
 }

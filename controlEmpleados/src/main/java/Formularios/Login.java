@@ -252,40 +252,39 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
-    usuarios_DAO usuarios = new usuarios_DAO();
-    String usuario = jTextField1.getText();
+    usuarios = new usuarios_DAO();
+     String usuario = jTextField1.getText();
     String contra = jPasswordField1.getText();
-   
     usuarios usuarioAutenticado = usuarios.validarUsuario(usuario, contra);
-    int id= usuarioAutenticado.getIdUsuario();
-        if (usuarioAutenticado != null) {
-            switch (usuarioAutenticado.getIdRol()) {
-                case 1:
-                    Principal objAdmin = new Principal(id);
-                    objAdmin.setVisible(true);
-                    this.dispose();
-                    System.out.println("Sesión iniciada como Administrador");
-                    break;
-                case 5:
-                    Principal_empleado objSupervisor = new Principal_empleado(id);
-                    objSupervisor.setVisible(true);
-                    this.dispose();
-                    System.out.println("Sesión iniciada como Supervisor");
-                    break;
-                case 6:
-                    Principal_empleado emp = new Principal_empleado(id);
-                    emp.setVisible(true);
-                    this.dispose();
-                    System.out.println("Sesión iniciada como Usuario Normal");
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Error", "Rol no reconocido", JOptionPane.ERROR_MESSAGE);
-                    break;
-            }
-            System.out.println("ID del usuario autenticado: " + id);
-        } else {
-            JOptionPane.showMessageDialog(null, "Error", "Contraseña o usuario incorrectos", JOptionPane.ERROR_MESSAGE);
+    if (usuarioAutenticado != null) {
+        int id = usuarioAutenticado.getIdUsuario(); 
+        switch (usuarioAutenticado.getIdRol()) {
+            case 1:
+                Principal objAdmin = new Principal(id);
+                objAdmin.setVisible(true);
+                this.dispose();
+                System.out.println("Sesión iniciada como Administrador");
+                break;
+            case 5:
+                Principal_empleado objSupervisor = new Principal_empleado(id);
+                objSupervisor.setVisible(true);
+                this.dispose();
+                System.out.println("Sesión iniciada como Supervisor");
+                break;
+            case 6:
+                Principal_empleado emp = new Principal_empleado(id);
+                emp.setVisible(true);
+                this.dispose();
+                System.out.println("Sesión iniciada como Usuario Normal");
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Error", "Rol no reconocido", JOptionPane.ERROR_MESSAGE);
+                break;
         }
+        System.out.println("ID del usuario autenticado: " + id);
+    } else {
+        JOptionPane.showMessageDialog(null, "Error", "Contraseña o usuario incorrectos", JOptionPane.ERROR_MESSAGE);
+    }
     jTextField1.setText("");
     jPasswordField1.setText("");
 

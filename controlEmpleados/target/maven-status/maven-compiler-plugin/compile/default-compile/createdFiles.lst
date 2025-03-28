@@ -1,5 +1,6 @@
 Formularios\Login$1.class
 clasesDAO\empleados_DAO.class
+Formularios\admin\empleados_admin$6.class
 Formularios\admin\Principal.class
 Clases\Permisos_Area.class
 Formularios\Login.class
@@ -11,6 +12,7 @@ Formularios\admin\editarPerfil_admin$3.class
 Formularios\admin\Principal$2.class
 Clases\EstadoUtensilios.class
 clasesDAO\pagos_DAO.class
+Formularios\admin\empleados_admin$3.class
 Formularios\Login$5.class
 Clases\Conexion.class
 Formularios\admin\editarIngredientes_admin.class
@@ -21,6 +23,7 @@ Formularios\Registro_principal$8.class
 Formularios\Login$7.class
 Clases\Utensilios.class
 Formularios\admin\editarPerfil_admin$4.class
+Formularios\admin\empleados_admin$5.class
 Clases\Proveedor.class
 Formularios\admin\agregarIngredientes_admin.class
 Formularios\admin\Principal$3.class
@@ -33,8 +36,8 @@ clasesDAO\categoriaIngredientes_DAO.class
 Formularios\Registro_principal$13.class
 Formularios\admin\asignarPuestos$3.class
 clasesDAO\inventarioUtensilios_DAO.class
-Formularios\admin\editarEmpleado_admin.class
 Formularios\Registro_principal$4.class
+Formularios\admin\empleados_admin$2.class
 Formularios\Registro_principal$10.class
 Formularios\admin\asignarPuestos$1.class
 Formularios\empleado\horarios_empleado.class
@@ -44,6 +47,7 @@ Formularios\Registro_principal$7.class
 Formularios\admin\solicitudes_admin.class
 Clases\Puestos.class
 Formularios\admin\empleados_admin$1.class
+Formularios\admin\empleados_admin$4.class
 clasesDAO\inventarioIngredientes_DAO.class
 Formularios\admin\editarPago_admin.class
 Formularios\admin\auditoria_admin.class
@@ -57,9 +61,12 @@ clasesDAO\horarios_DAO.class
 Formularios\Login$3.class
 Formularios\empleado\Consumir.class
 Formularios\admin\editarPerfil_admin$1.class
+Formularios\admin\Principal$5.class
 Formularios\admin\agregarRecetas.class
+Formularios\admin\asignarPuestos$4.class
 Formularios\Registro_principal$6.class
 Clases\auditorias.class
+Formularios\empleado\Principal_empleado$3.class
 Clases\horario.class
 Clases\inventarioUtensilios.class
 Clases\TipoUtensilio.class
@@ -77,6 +84,7 @@ Clases\Areas.class
 Formularios\Registro_principal$9.class
 Formularios\admin\editarPerfil_admin$2.class
 Formularios\empleado\editarUsuario_empleado$1.class
+Formularios\admin\Principal$4.class
 Formularios\admin\Principal$1.class
 Formularios\admin\registro_admin.class
 Formularios\empleado\Principal_empleado.class
