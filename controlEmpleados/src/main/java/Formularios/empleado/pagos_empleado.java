@@ -4,36 +4,61 @@
  */
 package Formularios.empleado;
 
+import Clases.empleados;
+import Clases.pagos;
 import clasesDAO.empleados_DAO;
+import clasesDAO.pagos_DAO;
 import clasesDAO.usuarios_DAO;
+import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author david
  */
 public class pagos_empleado extends javax.swing.JInternalFrame {
-
+    DefaultTableModel model1;
     int id;
+    pagos_DAO pago;
+    usuarios_DAO dao;
+    ArrayList<pagos> listaPagos;
+    ArrayList<empleados> listaEmpleados;
+    DefaultTableModel model2;
     public pagos_empleado() {
         initComponents();
+        model1 = (DefaultTableModel) jTable1.getModel();
+        model2= (DefaultTableModel) jTable2.getModel();
+        this.cargar();
     }
     public pagos_empleado(int id){
         initComponents();
         this.id=id;
-        this.encontrar();
+        model2= (DefaultTableModel) jTable2.getModel();
+        model1 = (DefaultTableModel) jTable1.getModel();
+        this.cargar();
     }
-    public void encontrar(){
-        usuarios_DAO dao = new usuarios_DAO();
-         // ID del usuario que deseas consultar
+    public void cargar(){
+        model1.setRowCount(0);
+        dao = new usuarios_DAO();
         Integer idEmpleado = dao.obtenerIdEmpleadoPorUsuario(id);
-
+        usuarios_DAO usuario= new usuarios_DAO();
+        Integer idPuesto= usuario.ObtenerIdArea(idEmpleado);
+        System.out.print("El id del area es " + idPuesto);
         if (idEmpleado != null) {
             System.out.println("El ID del empleado es: " + idEmpleado);
         } else {
             System.out.println("No se encontró un empleado para el usuario con ID " + id + " o si " + idEmpleado);
         }
+        empleados_DAO empleadosDAO = new empleados_DAO();
+        listaEmpleados = empleadosDAO.ObtenerDatos(id, idEmpleado);
+        for (empleados empleado : listaEmpleados) {
+            model1.addRow(new Object[]{
+                empleado.getNombre(),
+                empleado.getPuesto(),
+                empleado.getSalarioNeto()
+            });
+        }
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,7 +74,8 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable2 = new javax.swing.JTable();
 
         setBorder(null);
 
@@ -93,7 +119,7 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
                 {null, null, null}
             },
             new String [] {
-                "Nombre", "Puesto", "Salario Base"
+                "Nombre", "Puesto", "Salario Neto"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -104,12 +130,37 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 670, 160));
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 670, 120));
 
-        jTextField1.setText("Buscar");
-        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 660, 30));
+        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Salario Base", "Cantidad de horas extra", "Ingresos por horas extra", "Total descuentos", "Salario Neto"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jTable2);
+
+        main.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 780, 140));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,14 +180,45 @@ public class pagos_empleado extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+      dao = new usuarios_DAO();
+        model2.setRowCount(0);
+        Integer idEmpleado = dao.obtenerIdEmpleadoPorUsuario(id);
+        System.out.println("ID del empleado obtenido: " + idEmpleado);
+
+        if (idEmpleado != null) {
+            pago = new pagos_DAO();
+            listaPagos = pago.salarioEmpleados(idEmpleado);
+            System.out.println("Tamaño de listaPagos: " + listaPagos.size());
+
+            if (!listaPagos.isEmpty()) {
+                for (pagos pago : listaPagos) {
+                    System.out.println("Salario Base: " + pago.getSalarioBase());
+                    System.out.println("Salario Neto: " + pago.getSalarioNeto());
+                    model2.addRow(new Object[]{
+                        pago.getSalarioBase(),
+                        pago.getHorasExtra(),
+                        pago.getIngresoExtra(),
+                        pago.getDescuentos(),
+                        pago.getSalarioNeto()
+                    });
+                }
+            } else {
+                System.out.println("No se encontraron pagos para el empleado con ID: " + idEmpleado);
+            }
+        } else {
+            System.out.println("No se pudo obtener el ID del empleado.");
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTable jTable2;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

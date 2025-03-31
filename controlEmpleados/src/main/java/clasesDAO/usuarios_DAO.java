@@ -166,22 +166,52 @@ public class usuarios_DAO {
         String sql = "{CALL sp_ObtenerIdEmpleado(?, ?)}";
 
         try (CallableStatement cs = con.prepareCall(sql)) {
-
-            // Asignar parámetros de entrada y salida
             cs.setInt(1, idUsuario);
             cs.registerOutParameter(2, Types.INTEGER);
             cs.execute();
-
-            // Obtener el resultado de salida
             idEmpleado = cs.getInt(2);
-            if (cs.wasNull()) {  // Si el valor es NULL en SQL, evitar errores en Java
+            if (cs.wasNull()) { 
                 idEmpleado = null;
             }
-
         } catch (SQLException e) {
             System.out.println("Error al obtener el ID del empleado: " + e.getMessage());
         }
-
         return idEmpleado;
+    }
+    public Integer ObtenerIdArea(int idEmpleado) {
+        Integer idArea = null;
+        String sql = "{CALL ObtenerIdPuesto(?)}";
+
+        try (CallableStatement cs = con.prepareCall(sql)) {
+            cs.setInt(1, idEmpleado); 
+
+            try (ResultSet rs = cs.executeQuery()) { 
+                if (rs.next()) {
+                    idArea = rs.getInt(1); 
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error, área no asignada al id de empleado: " + idEmpleado);
+        }
+
+        return idArea;
+    }
+    public Integer ObtenerIdUsuario(int idEmpleado) {
+        Integer idUsuario = null;
+        String sql = "{CALL ObtenerIdUsuarioPorIdEmpleado(?)}";
+
+        try (CallableStatement cs = con.prepareCall(sql)) {
+            cs.setInt(1, idEmpleado); 
+
+            try (ResultSet rs = cs.executeQuery()) { 
+                if (rs.next()) {
+                    idUsuario = rs.getInt(1); 
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error, área no asignada al id de empleado: " + idEmpleado);
+        }
+
+        return idUsuario;
     }
 }

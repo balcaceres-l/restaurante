@@ -84,6 +84,11 @@ public class Principal extends javax.swing.JFrame {
         btnEditar_perfil2.setText("PAGOS");
         btnEditar_perfil2.setBorder(null);
         btnEditar_perfil2.setBorderPainted(false);
+        btnEditar_perfil2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfil2ActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil3.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -239,6 +244,12 @@ public class Principal extends javax.swing.JFrame {
         us.setVisible(true);
         jDesktopPane1.add(us);
     }//GEN-LAST:event_btnEditar_perfilActionPerformed
+
+    private void btnEditar_perfil2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil2ActionPerformed
+        pagos_admin us= new pagos_admin();
+        us.setVisible(true);
+        jDesktopPane1.add(us);
+    }//GEN-LAST:event_btnEditar_perfil2ActionPerformed
 
     /**
      * @param args the command line arguments

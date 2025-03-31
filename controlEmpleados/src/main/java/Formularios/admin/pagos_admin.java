@@ -4,19 +4,95 @@
  */
 package Formularios.admin;
 
+import Clases.empleados;
+import Clases.pagos;
+import Clases.usuarios;
+import clasesDAO.empleados_DAO;
+import clasesDAO.pagos_DAO;
+import clasesDAO.usuarios_DAO;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import javax.swing.RowFilter;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+
 /**
  *
  * @author david
  */
 public class pagos_admin extends javax.swing.JInternalFrame {
 
-    /**
-     * Creates new form pagos_admin
-     */
+    DefaultTableModel model1;
+    ArrayList<pagos> listaPagos;
+    pagos_DAO pagos;
+    usuarios_DAO dao;
+    usuarios_DAO user;
+    
+    usuarios usuario;
     public pagos_admin() {
         initComponents();
-    }
+        model1= (DefaultTableModel) jTable1.getModel();
+        jTextField1.getDocument().addDocumentListener(new DocumentListener() {
+        private void filterTable() {
+            String searchText = jTextField1.getText().trim().toLowerCase();
+            TableRowSorter<DefaultTableModel> sorter = new TableRowSorter<>(model1);
+            jTable1.setRowSorter(sorter);
 
+            if (searchText.isEmpty()) {
+                sorter.setRowFilter(null);
+            } else {
+                sorter.setRowFilter(RowFilter.regexFilter("(?i)" + searchText));
+            }
+        }
+
+        @Override
+        public void insertUpdate(DocumentEvent e) {
+            filterTable();
+        }
+
+        @Override
+        public void removeUpdate(DocumentEvent e) {
+            filterTable();
+        }
+
+        @Override
+        public void changedUpdate(DocumentEvent e) {
+            filterTable();
+        }
+        });
+        this.cargar();
+    }
+    public void cargar(){
+        pagos= new pagos_DAO();
+        listaPagos= pagos.obtenerTodosLosEmpleados();
+        model1.setRowCount(0);
+        for (pagos paga : listaPagos) {
+            model1.addRow(new Object[]{
+            paga.getIdEmpleado(),
+            paga.getNombre(),
+            paga.getSalarioBase(),
+            paga.getHorasExtra(),
+            paga.getDescuentos(),
+            paga.getSalarioNeto()
+        });
+        }
+    }
+    public void poner(){
+        try{
+            user= new usuarios_DAO();
+            dao= new usuarios_DAO();
+            int filaSeleccionada = jTable1.getSelectedRow();
+            int id = (int) jTable1.getValueAt(filaSeleccionada, 0);
+            if (filaSeleccionada == -1) {
+            JOptionPane.showMessageDialog(null, "Seleccione un usuario en la tabla.");
+            return;
+            }
+            Integer idEmpleado = dao.obtenerIdEmpleadoPorUsuario(id);
+        }catch(Exception e){
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,12 +106,24 @@ public class pagos_admin extends javax.swing.JInternalFrame {
         header = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPagos = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
         btnAsignarPagos = new javax.swing.JButton();
         btnEditarPagos = new javax.swing.JButton();
         btnEliminarPago = new javax.swing.JButton();
-        txtBuscarPagos = new javax.swing.JTextField();
+        jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jTextField7 = new javax.swing.JTextField();
 
         setBorder(null);
 
@@ -54,69 +142,109 @@ public class pagos_admin extends javax.swing.JInternalFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(329, 329, 329)
                 .addComponent(jLabel2)
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(443, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerLayout.createSequentialGroup()
                 .addContainerGap(37, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(34, 34, 34))
+                .addGap(46, 46, 46))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, -1));
 
-        tblPagos.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Empleado", "Fecha Pago", "Salario Base", "Descuentos", "Salario Neto"
+                "Id Empleado", "Nombre", "Salario Base", "Horas Extra", "Descuentos", "Salario Neto"
             }
-        ));
-        jScrollPane1.setViewportView(tblPagos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, true, false, false
+            };
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 760, 260));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 840, 180));
 
         btnAsignarPagos.setBackground(new java.awt.Color(0, 102, 153));
         btnAsignarPagos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAsignarPagos.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignarPagos.setText("Asignar Pago");
-        main.add(btnAsignarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, 30));
+        main.add(btnAsignarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, 30));
 
         btnEditarPagos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEditarPagos.setText("Editar Pago");
         btnEditarPagos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        main.add(btnEditarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 430, 90, 30));
+        main.add(btnEditarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 90, 30));
 
         btnEliminarPago.setBackground(new java.awt.Color(0, 102, 153));
         btnEliminarPago.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEliminarPago.setForeground(new java.awt.Color(255, 255, 255));
         btnEliminarPago.setText("Eliminar Pago");
-        main.add(btnEliminarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, 30));
+        main.add(btnEliminarPago, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 560, -1, 30));
 
-        txtBuscarPagos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        txtBuscarPagos.setForeground(new java.awt.Color(204, 204, 204));
-        txtBuscarPagos.setText("Buscar");
-        main.add(txtBuscarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 760, 30));
+        jTextField1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
+        jTextField1.setText("Buscar");
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 760, 30));
 
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
-        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 430, 130, 40));
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 550, 130, 40));
+
+        jLabel1.setText("Cantidad de horas extra");
+        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 170, 140, -1));
+
+        jLabel3.setText("Id Empleado");
+        main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, 70, -1));
+
+        jLabel4.setText("Nombre");
+        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 120, 70, -1));
+
+        jLabel5.setText("Salario Neto");
+        main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 230, 120, -1));
+
+        jLabel6.setText("Salario Base");
+        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 70, -1));
+
+        jLabel7.setText("Descuentos");
+        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 70, -1));
+
+        jTextField2.setEditable(false);
+        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 90, -1));
+
+        jTextField3.setEditable(false);
+        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, 90, -1));
+
+        jTextField4.setEditable(false);
+        main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 120, 90, -1));
+
+        jTextField5.setEditable(false);
+        main.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 230, 90, -1));
+        main.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 110, -1));
+        main.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
 
         pack();
@@ -129,10 +257,22 @@ public class pagos_admin extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminarPago;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel main;
-    private javax.swing.JTable tblPagos;
-    private javax.swing.JTextField txtBuscarPagos;
     // End of variables declaration//GEN-END:variables
 }

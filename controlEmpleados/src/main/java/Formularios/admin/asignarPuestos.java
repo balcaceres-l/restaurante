@@ -206,7 +206,7 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
         jTextArea1.setText("Informacion del Salario de Acuerdo al puesto\n\n1- Chef $3200.59\n2- Bodeguero $589.89\n3- Cocinero $800.14\n4- Bar Tender $788.63\n5- Recepcionista 456.12\n");
         jScrollPane1.setViewportView(jTextArea1);
 
-        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 330, 170));
+        main.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 330, 170));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -223,8 +223,7 @@ public class asignarPuestos extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirEmpleadoActionPerformed
-        Principal us= new Principal();
-        us.setVisible(true);
+        
         this.dispose();
     }//GEN-LAST:event_btnSalirEmpleadoActionPerformed
 

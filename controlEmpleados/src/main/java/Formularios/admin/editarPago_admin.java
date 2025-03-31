@@ -99,6 +99,7 @@ public class editarPago_admin extends javax.swing.JInternalFrame {
         jLabel5.setText("DESCUENTOS");
         main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, 20));
 
+        jTextField4.setEditable(false);
         jTextField4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jTextField4.setEnabled(false);
         main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 230, 30));
@@ -107,6 +108,7 @@ public class editarPago_admin extends javax.swing.JInternalFrame {
         jLabel6.setText("SALARIO NETO");
         main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
 
+        jTextField5.setEditable(false);
         jTextField5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jTextField5.setEnabled(false);
         main.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 220, 30));

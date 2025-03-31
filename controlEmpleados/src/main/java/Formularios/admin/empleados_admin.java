@@ -114,7 +114,6 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         jTable1 = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         btnAggEmpleado = new javax.swing.JButton();
-        btnVerSalario = new javax.swing.JButton();
         btnEliminarEmpleado = new javax.swing.JButton();
         btnEditarEmpleado = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -200,11 +199,6 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         });
         main.add(btnAggEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, 30));
 
-        btnVerSalario.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        btnVerSalario.setText("Ver Salario");
-        btnVerSalario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        main.add(btnVerSalario, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 540, 90, 30));
-
         btnEliminarEmpleado.setBackground(new java.awt.Color(0, 102, 153));
         btnEliminarEmpleado.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEliminarEmpleado.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,12 +223,17 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("REGRESAR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 153, 255)));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 540, 130, 40));
 
         jTextField2.setEditable(false);
-        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, 90, -1));
+        main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 90, -1));
 
-        jLabel1.setText("Id");
+        jLabel1.setText("Id Usuario");
         main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel3.setText("Nombre");
@@ -293,13 +292,16 @@ public class empleados_admin extends javax.swing.JInternalFrame {
         this.cargar();
     }//GEN-LAST:event_btnAggEmpleadoActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void editarEmpleadoDesdeUI() {
         try {
             int idUsuario = Integer.parseInt(jTextField2.getText());
             String nuevoNombre = jTextField3.getText();
             String nuevaFechaStr = jTextField4.getText();
-
-            // Validar que los campos no estén vacíos
             if (nuevoNombre.isEmpty() || nuevaFechaStr.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.");
                 return;
@@ -310,13 +312,13 @@ public class empleados_admin extends javax.swing.JInternalFrame {
             String nuevoRol;
             switch (jComboBox1.getSelectedIndex()) {
                 case 0:
-                    nuevoRol = "Administrador"; // ID en la BD: 1
+                    nuevoRol = "Administrador"; 
                     break;
                 case 1:
-                    nuevoRol = "Supervisor"; // ID en la BD: 5
+                    nuevoRol = "Supervisor"; 
                     break;
                 case 2:
-                    nuevoRol = "Usuario normal"; // ID en la BD: 6
+                    nuevoRol = "Usuario normal"; 
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Rol no válido.");
@@ -341,7 +343,6 @@ public class empleados_admin extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnAggEmpleado;
     private javax.swing.JButton btnEditarEmpleado;
     private javax.swing.JButton btnEliminarEmpleado;
-    private javax.swing.JButton btnVerSalario;
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;

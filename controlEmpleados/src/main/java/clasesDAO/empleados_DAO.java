@@ -51,9 +51,29 @@ public class empleados_DAO {
         }
         return listaEmpleados;
     }
+    public  ArrayList<empleados> ObtenerDatos(int idUsuario, int idEmpleado) {
+        ArrayList<empleados> listaEmpleados= new ArrayList<>();
+        String sql = "{CALL ObtenerDatosEmpleado(?, ?)}";
+        try {
+            CallableStatement cs = con.prepareCall(sql);
+            cs.setInt(1, idUsuario);
+            cs.setInt(2, idEmpleado);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                empleados empleado= new empleados(
+                rs.getString("NombreEmpleado"),
+                rs.getString("Puesto"),
+                rs.getDouble("SalarioNeto"));
+               listaEmpleados.add(empleado);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return listaEmpleados;
+    }
     public boolean editarEmpleado(empleados empleado) {
         String sql = "{CALL sp_ActualizarEmpleado(?, ?, ?, ?)}";
-
         try (CallableStatement ps = con.prepareCall(sql)) {
             ps.setInt(1, empleado.getIdUsuario());
             ps.setString(2, empleado.getNombre());
@@ -80,4 +100,5 @@ public class empleados_DAO {
             return false;
         }
     }
+    
 }

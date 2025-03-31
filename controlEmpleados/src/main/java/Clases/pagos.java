@@ -11,34 +11,72 @@ public class pagos {
     Date fechaPago;
     double descuentos;
     double salarioNeto;
+    double SalarioBase;
+    int horasExtra;
+    String nombre;
+    double ingresoExtra;
 
     public pagos() {
     }
 
-    public pagos(int idPago, int idEmpleado, Date fechaInicio, Date fechaCorte, Date fechaPago , double descuentos, double salarioNeto) {
-        this.idPago = idPago;
+    public pagos(double SalarioBase, int horasExtra,  double ingresoExtra, double descuentos, double salarioNeto) {
+        this.SalarioBase = SalarioBase;
+        this.horasExtra = horasExtra;
+        this.ingresoExtra = ingresoExtra;
+        this.descuentos=descuentos;
+        this.salarioNeto = salarioNeto;
+    }
+
+    public pagos(int idEmpleado, String nombre, double SalarioBase, int horasExtra, double descuentos, double salarioNeto) {
         this.idEmpleado = idEmpleado;
-        this.fechaInicio = fechaInicio;
-        this.fechaCorte = fechaCorte;
-        this.fechaPago = fechaPago;
+        this.nombre=nombre;
+        this.SalarioBase=SalarioBase;
+        this.horasExtra=horasExtra;
+        this.descuentos=descuentos;
+        this.salarioNeto=salarioNeto;
+    }
     
-        this.descuentos = descuentos;
-        this.salarioNeto = salarioNeto;
-    }
-
-    public pagos(int idPago, Date fechaInicio, Date fechaCorte, Date fechaPago , double descuentos, double salarioNeto) {
-        this.idPago = idPago;
-        this.fechaInicio = fechaInicio;
-        this.fechaCorte = fechaCorte;
-        this.fechaPago = fechaPago;
-        
-        this.descuentos = descuentos;
-        this.salarioNeto = salarioNeto;
-    }
-
     public int getIdPago() {
         return idPago;
     }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
+    
+    public double getSalarioBase() {
+        return SalarioBase;
+    }
+
+    public int getHorasExtra() {
+        return horasExtra;
+    }
+
+    public double getIngresoExtra() {
+        return ingresoExtra;
+    }
+
+    public static Logger getLOG() {
+        return LOG;
+    }
+
+    public void setSalarioBase(double SalarioBase) {
+        this.SalarioBase = SalarioBase;
+    }
+
+    public void setHorasExtra(int horasExtra) {
+        this.horasExtra = horasExtra;
+    }
+
+    public void setIngresoExtra(double ingresoExtra) {
+        this.ingresoExtra = ingresoExtra;
+    }
+    
 
     public int getIdEmpleado() {
         return idEmpleado;

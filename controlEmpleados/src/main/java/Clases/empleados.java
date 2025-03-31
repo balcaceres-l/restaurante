@@ -12,6 +12,8 @@ public class empleados {
     Date fechaContratacion;
     String nombre;
     String rol;
+    double salarioNeto;
+    String puesto;
    
     public empleados() {
     }
@@ -32,6 +34,28 @@ public class empleados {
         this.fechaContratacion = fechaContratacion;
     }
 
+    public empleados(String nombre, String puesto, double salarioNeto) {
+        this.nombre = nombre;
+        this.puesto = puesto;
+        this.salarioNeto = salarioNeto;
+    }
+
+    public double getSalarioNeto() {
+        return salarioNeto;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setSalarioNeto(double salarioNeto) {
+        this.salarioNeto = salarioNeto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+    
     public String getNombre() {
         return nombre;
     }
