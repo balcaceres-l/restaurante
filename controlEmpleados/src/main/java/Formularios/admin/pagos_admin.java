@@ -10,6 +10,7 @@ import Clases.usuarios;
 import clasesDAO.empleados_DAO;
 import clasesDAO.pagos_DAO;
 import clasesDAO.usuarios_DAO;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.RowFilter;
@@ -18,10 +19,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author david
- */
+
 public class pagos_admin extends javax.swing.JInternalFrame {
 
     DefaultTableModel model1;
@@ -80,18 +78,58 @@ public class pagos_admin extends javax.swing.JInternalFrame {
         }
     }
     public void poner(){
-        try{
-            user= new usuarios_DAO();
-            dao= new usuarios_DAO();
+        try {
+            pagos_DAO pagos= new pagos_DAO();
             int filaSeleccionada = jTable1.getSelectedRow();
             int id = (int) jTable1.getValueAt(filaSeleccionada, 0);
             if (filaSeleccionada == -1) {
-            JOptionPane.showMessageDialog(null, "Seleccione un usuario en la tabla.");
+                JOptionPane.showMessageDialog(null, "Seleccione un usuario en la tabla.");
             return;
             }
-            Integer idEmpleado = dao.obtenerIdEmpleadoPorUsuario(id);
-        }catch(Exception e){
-        }
+            String salarioBaseText = jTextField7.getText().trim();
+            String horasExtraText = jTextField6.getText().trim();
+            if (salarioBaseText.isEmpty() || horasExtraText.isEmpty()) {
+                JOptionPane.showMessageDialog(this, 
+                "Debe ingresar tanto el salario base como las horas extra", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            double nuevoSalarioBase = Double.parseDouble(salarioBaseText);
+            double nuevasHorasExtra = Double.parseDouble(horasExtraText);
+            if (nuevoSalarioBase <= 0 || nuevasHorasExtra < 0) {
+                JOptionPane.showMessageDialog(this, 
+                    "El salario base debe ser positivo y las horas extra no pueden ser negativas", 
+                    "Error", 
+                    JOptionPane.ERROR_MESSAGE);
+               
+                return;
+            }
+            boolean exito=pagos.actualizarSaldoBase(id, nuevoSalarioBase, nuevasHorasExtra); ;
+            if (exito){
+                JOptionPane.showMessageDialog(this, 
+                "Salario base y horas extra actualizados correctamente", 
+                "Éxito", 
+                JOptionPane.INFORMATION_MESSAGE);
+            }
+            this.cargar();
+        }catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, 
+            "Los valores ingresados no son válidos. Verifique que el salario base y las horas extra sean números", 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, 
+            "Error al actualizar los datos: " + e.getMessage(), 
+            "Error de base de datos", 
+            JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, 
+            "Error inesperado: " + e.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+    }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -181,11 +219,21 @@ public class pagos_admin extends javax.swing.JInternalFrame {
         btnAsignarPagos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnAsignarPagos.setForeground(new java.awt.Color(255, 255, 255));
         btnAsignarPagos.setText("Asignar Pago");
+        btnAsignarPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAsignarPagosActionPerformed(evt);
+            }
+        });
         main.add(btnAsignarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 550, -1, 30));
 
         btnEditarPagos.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEditarPagos.setText("Editar Pago");
         btnEditarPagos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
+        btnEditarPagos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarPagosActionPerformed(evt);
+            }
+        });
         main.add(btnEditarPagos, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 560, 90, 30));
 
         btnEliminarPago.setBackground(new java.awt.Color(0, 102, 153));
@@ -249,6 +297,97 @@ public class pagos_admin extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAsignarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAsignarPagosActionPerformed
+        this.poner();
+    }//GEN-LAST:event_btnAsignarPagosActionPerformed
+    private void mostrarDatosEmpleado() {
+    // Obtener el índice de la fila seleccionada
+    int filaSeleccionada = jTable1.getSelectedRow();
+    
+    // Verificar si hay una fila seleccionada
+    if (filaSeleccionada == -1) {
+        // No hay fila seleccionada, se pueden limpiar los campos o mostrar un mensaje
+        limpiarCampos();
+        return;
+    }
+    
+    try {
+        // Obtener los valores de la fila seleccionada con conversión segura
+        Object idObj = jTable1.getValueAt(filaSeleccionada, 0);
+        Object nombreObj = jTable1.getValueAt(filaSeleccionada, 1);
+        Object salarioBaseObj = jTable1.getValueAt(filaSeleccionada, 2);
+        Object horasExtraObj = jTable1.getValueAt(filaSeleccionada, 3);
+        Object descuentosObj = jTable1.getValueAt(filaSeleccionada, 4);
+        Object salarioNetoObj = jTable1.getValueAt(filaSeleccionada, 5);
+        
+        // Convertir valores a String de manera segura
+        String idEmpleado = idObj != null ? idObj.toString() : "";
+        String nombre = nombreObj != null ? nombreObj.toString() : "";
+        
+        // Convertir números correctamente y formatear con dos decimales cuando sea necesario
+        double salarioBase = convertirADouble(salarioBaseObj);
+        double horasExtra = convertirADouble(horasExtraObj);
+        double descuentos = convertirADouble(descuentosObj);
+        double salarioNeto = convertirADouble(salarioNetoObj);
+        
+        // Mostrar los valores en los campos de texto correspondientes
+        jTextField3.setText(idEmpleado);
+        jTextField4.setText(nombre);
+        jTextField7.setText(String.format("%.2f", salarioBase));
+        jTextField6.setText(String.format("%.2f", horasExtra));
+        jTextField2.setText(String.format("%.2f", descuentos));
+        jTextField5.setText(String.format("%.2f", salarioNeto));
+        
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, 
+            "Error al cargar los datos: " + e.getMessage(), 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace(); // Para debugging
+    }
+}
+
+/**
+ * Método auxiliar para convertir un objeto a double de manera segura
+ * Maneja diferentes tipos de datos (Integer, Double, String, etc.)
+ */
+private double convertirADouble(Object obj) {
+    if (obj == null) {
+        return 0.0;
+    }
+    
+    if (obj instanceof Double) {
+        return (Double) obj;
+    } else if (obj instanceof Integer) {
+        return ((Integer) obj).doubleValue();
+    } else if (obj instanceof Float) {
+        return ((Float) obj).doubleValue();
+    } else if (obj instanceof Long) {
+        return ((Long) obj).doubleValue();
+    } else {
+        try {
+            return Double.parseDouble(obj.toString());
+        } catch (NumberFormatException e) {
+            return 0.0; // Valor por defecto si no se puede convertir
+        }
+    }
+}
+
+/**
+ * Método auxiliar para limpiar todos los campos de texto
+ */
+private void limpiarCampos() {
+    jTextField2.setText("");
+    jTextField3.setText("");
+    jTextField4.setText("");
+    jTextField5.setText("");
+    jTextField6.setText("");
+    jTextField7.setText("");
+}
+    private void btnEditarPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPagosActionPerformed
+        this.mostrarDatosEmpleado();
+    }//GEN-LAST:event_btnEditarPagosActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

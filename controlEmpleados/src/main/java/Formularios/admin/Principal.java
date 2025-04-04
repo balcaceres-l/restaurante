@@ -119,9 +119,14 @@ public class Principal extends javax.swing.JFrame {
         btnEditar_perfil6.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         btnEditar_perfil6.setForeground(new java.awt.Color(255, 255, 255));
-        btnEditar_perfil6.setText("AUDITORÍA");
+        btnEditar_perfil6.setText("REGISTRAR EMPLEADO");
         btnEditar_perfil6.setBorder(null);
         btnEditar_perfil6.setBorderPainted(false);
+        btnEditar_perfil6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditar_perfil6ActionPerformed(evt);
+            }
+        });
 
         btnEditar_perfil7.setBackground(new java.awt.Color(0, 102, 153));
         btnEditar_perfil7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
@@ -182,9 +187,9 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(btnEditar_perfil5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
                 .addComponent(btnEditar_perfil6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnEditar_perfil7, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(120, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
             .addGroup(sidebarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(sidebarLayout.createSequentialGroup()
                     .addGap(137, 137, 137)
@@ -250,6 +255,12 @@ public class Principal extends javax.swing.JFrame {
         us.setVisible(true);
         jDesktopPane1.add(us);
     }//GEN-LAST:event_btnEditar_perfil2ActionPerformed
+
+    private void btnEditar_perfil6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditar_perfil6ActionPerformed
+        registro_admin us= new registro_admin();
+        us.setVisible(true);
+        jDesktopPane1.add(us);
+    }//GEN-LAST:event_btnEditar_perfil6ActionPerformed
 
     /**
      * @param args the command line arguments

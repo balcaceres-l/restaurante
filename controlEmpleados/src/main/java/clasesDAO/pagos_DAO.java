@@ -22,13 +22,14 @@ public class pagos_DAO {
             cs.setInt(1, idEmpleado);
             rs = cs.executeQuery();
             while (rs.next()) {
-                double salarioBase = rs.getDouble("Salario_Base");
-                int horasExtra = rs.getInt("Cantidad_Horas_extra");
-                double ingresoExtra = rs.getDouble("Ingresos_Horas_Extra");
-                double descuentos = rs.getDouble("Total_Descuentos");
-                double salarioNeto = rs.getDouble("Salario_Neto");
+                double salarioBase = rs.getDouble("SalarioBase");
+                int horasExtra = rs.getInt("HorasExtras");
+                double ingresoExtra = rs.getDouble("IngresoHorasExtras");
+                double descuentos = rs.getDouble("TotalDescuentos");
+                double salarioNeto = rs.getDouble("SalarioNeto");
                 ingresoExtra = Math.round(ingresoExtra * 10.0) / 10.0;
                 descuentos= Math.round(descuentos *100.0)/100.0;
+                salarioNeto= Math.round(salarioNeto *100.0)/100.0;
                 pagos pago = new pagos(salarioBase, horasExtra, ingresoExtra, descuentos, salarioNeto);
                 listaPagos.add(pago);
             }
@@ -59,5 +60,21 @@ public class pagos_DAO {
             System.out.println("Error al obtener empleados: " + e);
         }
         return listaPagos;
+    }
+    public boolean actualizarSaldoBase(int idEmpleado, double nuevoSalarioBase, double nuevasHorasExtra) throws SQLException {
+        CallableStatement cstmt = null;
+        
+        try {
+            String sql = "{CALL ActualizarSaldoBase(?, ?, ?)}";
+            cstmt = con.prepareCall(sql);
+            cstmt.setInt(1, idEmpleado);
+            cstmt.setDouble(2, nuevoSalarioBase);
+            cstmt.setDouble(3, nuevasHorasExtra);
+            cstmt.execute();
+        } catch (SQLException e) {
+            System.err.println("Error al actualizar el salario base: " + e.getMessage());
+            return false;  
+        }
+        return true;
     }
 }

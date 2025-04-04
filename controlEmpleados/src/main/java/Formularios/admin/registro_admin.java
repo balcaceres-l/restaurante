@@ -4,6 +4,10 @@
  */
 package Formularios.admin;
 
+import Clases.usuarios;
+import clasesDAO.usuarios_DAO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author david
@@ -16,6 +20,52 @@ public class registro_admin extends javax.swing.JInternalFrame {
     public registro_admin() {
         initComponents();
     }
+    public void registro(){
+        String usuario = jTextField2.getText().trim();
+        String nombre = jTextField4.getText().trim();
+        String apellido = jTextField1.getText().trim();
+        String clave = jPasswordField1.getText().trim();
+        String correo = jTextField3.getText().trim();
+        int selecion = (jComboBox2.getSelectedIndex());
+        int idRol=0;
+        if(selecion==0){
+            idRol=1;
+        }else if(selecion==1){
+            idRol=5;
+        }else if(selecion == 2){
+            idRol=6;
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un rol válido");
+        }
+        if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+        }
+       if (usuario.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || clave.isEmpty() || correo.isEmpty()) {
+           JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (!usuario.matches("\\d+")) {
+           JOptionPane.showMessageDialog(null, "El usuario debe contener solo números.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (!correo.contains("@")) {
+           JOptionPane.showMessageDialog(null, "El correo debe contener una arroba (@).", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+       if (nombre.equalsIgnoreCase(apellido)) {
+           JOptionPane.showMessageDialog(null, "El nombre y el apellido no pueden ser iguales.", "Error", JOptionPane.ERROR_MESSAGE);
+           return;
+       }
+           usuarios nuevoUsuario = new usuarios(idRol, usuario, clave, nombre, apellido, correo);
+           usuarios_DAO usuarioDAO = new usuarios_DAO();
+           usuarioDAO.AgregarUsuario(nuevoUsuario);
+           jTextField1.setText("");
+           jTextField2.setText("");
+           jTextField3.setText("");
+           jTextField4.setText("");
+          
+       }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,14 +83,17 @@ public class registro_admin extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setBorder(null);
 
@@ -59,7 +112,7 @@ public class registro_admin extends javax.swing.JInternalFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(100, 100, 100)
                 .addComponent(jLabel2)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addContainerGap(107, Short.MAX_VALUE))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -69,32 +122,26 @@ public class registro_admin extends javax.swing.JInternalFrame {
                 .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, -1));
+        main.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel1.setText("Nombre");
-        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        jLabel1.setText("Contraseña");
+        main.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel3.setText("Usuario");
+        jLabel3.setText("Nombre");
         main.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel4.setText("Contraseña");
-        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, -1, -1));
+        jLabel4.setText("Apellido");
+        main.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jLabel5.setText("Rol");
         main.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 130, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        jLabel6.setText("Tipo");
-        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, -1, -1));
-        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 250, 30));
+        main.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, 250, 30));
         main.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 250, 30));
-        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 250, 30));
-
-        main.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 250, 160, 30));
+        main.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 250, 30));
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Supervisor", "Trabajador" }));
         main.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, 160, 30));
@@ -102,34 +149,65 @@ public class registro_admin extends javax.swing.JInternalFrame {
         jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton1.setText("SALIR");
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 153)));
-        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 90, 30));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        main.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 90, 30));
 
         jButton2.setBackground(new java.awt.Color(0, 102, 153));
         jButton2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("REGISTRAR");
-        main.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 410, 120, 30));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        main.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 450, 120, 30));
+
+        jLabel6.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel6.setText("Usuario");
+        main.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, -1, -1));
+        main.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 250, 30));
+
+        jLabel7.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
+        jLabel7.setText("Correo");
+        main.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        main.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 190, 30));
+
+        jCheckBox1.setText("Mostrar Contraseña");
+        main.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 400, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(main, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE)
+            .addComponent(main, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 508, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.registro();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel header;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -137,9 +215,12 @@ public class registro_admin extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel main;
     // End of variables declaration//GEN-END:variables
 }

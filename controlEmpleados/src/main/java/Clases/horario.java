@@ -7,17 +7,48 @@ public class horario {
     int idEmpleado;
     String diasLaborales;
     String diasDescanso;
-    Date horaEntrada;
-    Date horaSalida;
+    String nombre;
+    String puesto;
+    Date DiasLaboralesDate;
+    Date DiasDescansoDate;
 
     public horario() {
     }
-    public horario( int idEmpleado, String diasLaborales, String diasDescanso, Date horaEntrada, Date horaSalida) {
+    
+
+    public horario(int idEmpleado, String nombre, String diasLaborales, String diasDescanso) {
         this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
         this.diasLaborales = diasLaborales;
         this.diasDescanso = diasDescanso;
-        this.horaEntrada = horaEntrada;
-        this.horaSalida = horaSalida;
+        
+    }
+
+    public horario(String diasLaborales) {
+        this.diasLaborales = diasLaborales;
+    }
+    
+
+    public horario(int idEmpleado, String nombre, String puesto) {
+        this.idEmpleado = idEmpleado;
+        this.nombre = nombre;
+        this.puesto = puesto;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
     
     public int getIdHorario() {
@@ -36,12 +67,12 @@ public class horario {
         return diasDescanso;
     }
 
-    public Date getHoraEntrada() {
-        return horaEntrada;
+    public Date getDiasLaboralesDate() {
+        return DiasLaboralesDate;
     }
 
-    public Date getHoraSalida() {
-        return horaSalida;
+    public Date getDiasDescansoDate() {
+        return DiasDescansoDate;
     }
 
     public void setIdHorario(int idHorario) {
@@ -60,12 +91,12 @@ public class horario {
         this.diasDescanso = diasDescanso;
     }
 
-    public void setHoraEntrada(Date horaEntrada) {
-        this.horaEntrada = horaEntrada;
+    public void setDiasLaboralesDate(Date DiasLaboralesDate) {
+        this.DiasLaboralesDate = DiasLaboralesDate;
     }
 
-    public void setHoraSalida(Date horaSalida) {
-        this.horaSalida = horaSalida;
+    public void setDiasDescansoDate(Date DiasDescansoDate) {
+        this.DiasDescansoDate = DiasDescansoDate;
     }
     
 }
